@@ -15,7 +15,6 @@
 
 .text-form_theme_signin {
     position: relative;
-    padding: 20px 0 40px 0;
 }
 
 .link_theme_signin {
@@ -24,10 +23,6 @@
     font-size: 24.37px;
     text-decoration: none;
     color: black;
-}
-
-.subtitle_theme_signin {
-    padding: 40px 0 40px 0;
 }
 
 /* 
@@ -42,6 +37,14 @@
 
     .forms_theme_signin {
         width: 80%;
+    }
+
+    .text-form_theme_signin {
+        padding: 20px 0 40px 0;
+    }
+
+    .subtitle_theme_signin {
+        padding: 40px 0 40px 0;
     }
 
     .link_theme_signin {
@@ -78,6 +81,14 @@
         width: 80%;
     }
 
+    .text-form_theme_signin {
+        padding: 20px 0 40px 0;
+    }
+
+    .subtitle_theme_signin {
+        padding: 40px 0 40px 0;
+    }
+
     .link_theme_signin {
         font-size: 24.37px;
         display: inline-block;
@@ -101,6 +112,14 @@
         width: 80%;
     }
 
+    .text-form_theme_signin {
+        padding: 20px 0 40px 0;
+    }
+
+    .subtitle_theme_signin {
+        padding: 40px 0 40px 0;
+    }
+
     .link_theme_signin {
         font-size: 24.37px;
         display: inline-block;
@@ -120,8 +139,16 @@
         width: 100%;
     }
 
+    .text-form_theme_signin {
+        padding: 20px 0 40px 0;
+    }
+
     .forms_theme_signin {
         width: 80%;
+    }
+
+    .subtitle_theme_signin {
+        padding: 40px 0 40px 0;
     }
 
     .link_theme_signin {
@@ -147,6 +174,14 @@
         width: 70%;
     }
 
+    .text-form_theme_signin {
+        padding: 20px 0 40px 0;
+    }
+
+    .subtitle_theme_signin {
+        padding: 40px 0 40px 0;
+    }
+
     .link_theme_signin {
         font-size: 15px;
         display: inline-block;
@@ -170,11 +205,23 @@
         width: 70%;
     }
 
+    .text-form_theme_signin {
+        padding: 20px 0 20px 0;
+    }
+
+    .subtitle_theme_signin {
+        padding: 20px 0 20px 0;
+    }
+
+    .form-button_theme_signin {
+        margin: 20px 0 0 0;
+    }
+
     .link_theme_signin {
         font-size: 15px;
         display: inline-block;
         padding: 10px 20px 10px 20px;
-        margin: 40px 0 0 15vw;
+        margin: 20px 0 0 15vw;
         border: 2px solid black;
     }
 }

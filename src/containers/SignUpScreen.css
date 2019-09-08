@@ -15,7 +15,6 @@
 
 .text-form_theme_signup {
     position: relative;
-    padding: 20px 0 40px 0;
 }
 
 .link_theme_signup {
@@ -38,6 +37,10 @@
 
     .forms_theme_signup {
         width: 80%;
+    }
+
+    .text-form_theme_signup {
+        padding: 20px 0 40px 0;
     }
 
     .link_theme_signup {
@@ -74,6 +77,10 @@
         width: 80%;
     }
 
+    .text-form_theme_signup {
+        padding: 20px 0 40px 0;
+    }
+
     .link_theme_signup {
         font-size: 24.37px;
         display: inline-block;
@@ -95,6 +102,10 @@
 
     .forms_theme_signup {
         width: 80%;
+    }
+
+    .text-form_theme_signup {
+        padding: 20px 0 40px 0;
     }
 
     .link_theme_signup {
@@ -120,6 +131,10 @@
         width: 80%;
     }
 
+    .text-form_theme_signup {
+        padding: 20px 0 40px 0;
+    }
+
     .link_theme_signup {
         font-size: 24.37px;
         display: inline-block;
@@ -141,6 +156,10 @@
 
     .forms_theme_signup {
         width: 70%;
+    }
+
+    .text-form_theme_signup {
+        padding: 20px 0 40px 0;
     }
 
     .link_theme_signup {
@@ -166,11 +185,19 @@
         width: 70%;
     }
 
+    .text-form_theme_signup {
+        padding: 10px 0 10px 0;
+    }
+
+    .form-button_theme_signup {
+        margin: 20px 0 0 0;
+    }
+
     .link_theme_signup {
         font-size: 15px;
         display: inline-block;
         padding: 10px 20px 10px 20px;
-        margin: 40px 0 0 15vw;
+        margin: 20px 0 0 15vw;
         border: 2px solid black;
     }
 }

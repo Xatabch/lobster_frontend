@@ -49,7 +49,7 @@ class SignInScreen extends Component {
                             errorText={this.props.passwordError}
                             inputValue={this.props.password}
                             onChange={this.onChangePassword.bind(this)} />
-                        <FormButton buttonText="Sign In"/>
+                        <FormButton modifiers="form-button_theme_signin" buttonText="Sign In"/>
                     </Forms>
                     <Link className="link link_theme_signin" to={"/signup"}>Sign Up</Link>
                 </Content>

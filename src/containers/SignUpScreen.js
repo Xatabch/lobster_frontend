@@ -88,7 +88,7 @@ class SignUpScreen extends Component {
                             inputValue={this.props.passwordRepeat}
                             onChange={this.onChangePasswordRepeat.bind(this)} 
                             onBlur={this.onPasswordRepeatBlur.bind(this)} />
-                        <FormButton buttonText="Sign Up"/>
+                        <FormButton modifiers="form-button_theme_signup" buttonText="Sign Up"/>
                     </Forms>
                     <Link className="link link_theme_signup" to={"/signin"}>Sign In</Link>
                 </Content>
