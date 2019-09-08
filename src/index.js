@@ -9,6 +9,7 @@ import './index.css';
 import 'normalize.css';
 
 import SignInScreen from './containers/SignInScreen';
+import SignUpScreen from './containers/SignUpScreen';
 
 import * as reducers from './store/reducers';
 
@@ -20,6 +21,7 @@ ReactDOM.render(
         <Router history={history}>
             <Route path="/" component={SignInScreen} />
             <Route path="/signin" component={SignInScreen} />
+            <Route path="/signup" component={SignUpScreen} />
         </Router>
     </Provider>,
     document.getElementById('root')

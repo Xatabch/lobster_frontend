@@ -15,7 +15,6 @@
 @media (min-width: 1281px) {
     .subtitle {
         font-size: 39.27px;
-        padding: 40px 0 40px 0;
     }
 }
   
@@ -26,7 +25,6 @@
 @media (min-width: 1025px) and (max-width: 1280px) {
     .subtitle {
         font-size: 39.27px;
-        padding: 40px 0 40px 0;
     }
 }
   
@@ -37,7 +35,6 @@
 @media (min-width: 768px) and (max-width: 1024px) {
     .subtitle {
         font-size: 39.27px;
-        padding: 40px 0 40px 0;
     }
 }
   
@@ -48,7 +45,6 @@
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) { 
     .subtitle {
         font-size: 39.27px;
-        padding: 40px 0 40px 0;
     }
 }
   
@@ -59,7 +55,6 @@
 @media (min-width: 481px) and (max-width: 767px) {  
     .subtitle {
         font-size: 24.27px;
-        padding: 40px 0 40px 0;
     }
 }
   
@@ -70,6 +65,5 @@
 @media (min-width: 320px) and (max-width: 480px) { 
     .subtitle {
         font-size: 24.27px;
-        padding: 40px 0 40px 0;
     }
 }

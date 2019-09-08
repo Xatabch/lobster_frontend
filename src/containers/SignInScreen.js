@@ -32,12 +32,12 @@ class SignInScreen extends Component {
             <Container modifiers="container_theme_signin">
                 <Content modifiers="content_theme_signin">
                     <Title modifiers="title_theme_center" titleText="Lobster" />
-                    <Subtitle modifiers="subtitle_theme_center" subtitleText="Sign in" />
+                    <Subtitle modifiers="subtitle_theme_center subtitle_theme_signin" subtitleText="Sign in" />
                     <Forms modifiers="forms_theme_signin">
                         <TextForm 
                             labelText="Email or login"
                             inputType="text"
-                            modifiers="text-form_theme_singin"
+                            modifiers="text-form_theme_signin"
                             errorText={this.props.loginError}
                             inputValue={this.props.login}
                             onChange={this.onChangeLogin.bind(this)} 
@@ -45,7 +45,7 @@ class SignInScreen extends Component {
                         <TextForm 
                             labelText="Password"
                             inputType="password"
-                            modifiers="text-form_theme_singin"
+                            modifiers="text-form_theme_signin"
                             errorText={this.props.passwordError}
                             inputValue={this.props.password}
                             onChange={this.onChangePassword.bind(this)} />

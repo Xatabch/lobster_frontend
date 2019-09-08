@@ -1,24 +1,24 @@
-.container_theme_signin {
+.container_theme_signup {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.content_theme_signin {
+.content_theme_signup {
     min-width: 300px;
     max-width: 500px;
 }
 
-.forms_theme_signin {
+.forms_theme_signup {
     margin: 0 auto 0 auto;
 }
 
-.text-form_theme_signin {
+.text-form_theme_signup {
     position: relative;
     padding: 20px 0 40px 0;
 }
 
-.link_theme_signin {
+.link_theme_signup {
     font-family: europa, sans-serif;
     font-weight: normal;
     font-size: 24.37px;
@@ -26,40 +26,36 @@
     color: black;
 }
 
-.subtitle_theme_signin {
-    padding: 40px 0 40px 0;
-}
-
 /* 
     ##Device = Desktops
     ##Screen = 1281px to higher resolution desktops
 */
 @media (min-width: 1281px) {
-    .content_theme_signin {
+    .content_theme_signup {
         height: 90%;
         width: 50%;
     }
 
-    .forms_theme_signin {
+    .forms_theme_signup {
         width: 80%;
     }
 
-    .link_theme_signin {
+    .link_theme_signup {
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100%;
         width: 20%;
         position: absolute;
-        right: 0;
+        left: 0;
         top: 0;
-        border-left: 2px solid black;
+        border-right: 2px solid black;
         transition: 300ms linear;
     }
     
-    .link_theme_signin:hover {
+    .link_theme_signup:hover {
         background-color: black;
-        background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 12L19 12' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M12 5L19 12L12 19' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+        background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19 12H5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M12 19L5 12L12 5' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
         color: rgba(0, 0, 0, 0);
     }
 }
@@ -69,16 +65,16 @@
     ##Screen = B/w 1025px to 1280px
 */
 @media (min-width: 1025px) and (max-width: 1280px) {
-    .content_theme_signin {
+    .content_theme_signup {
         height: 90%;
         width: 100%;
     }
 
-    .forms_theme_signin {
+    .forms_theme_signup {
         width: 80%;
     }
 
-    .link_theme_signin {
+    .link_theme_signup {
         font-size: 24.37px;
         display: inline-block;
         padding: 10px 20px 10px 20px;
@@ -92,16 +88,16 @@
     ##Screen = B/w 768px to 1024px
 */
 @media (min-width: 768px) and (max-width: 1024px) {
-    .content_theme_signin {
+    .content_theme_signup {
         height: 100%;
         width: 100%;
     }
 
-    .forms_theme_signin {
+    .forms_theme_signup {
         width: 80%;
     }
 
-    .link_theme_signin {
+    .link_theme_signup {
         font-size: 24.37px;
         display: inline-block;
         padding: 10px 20px 10px 20px;
@@ -115,16 +111,16 @@
     ##Screen = B/w 768px to 1024px
 */
 @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) { 
-    .content_theme_signin {
+    .content_theme_signup {
         height: 100%;
         width: 100%;
     }
 
-    .forms_theme_signin {
+    .forms_theme_signup {
         width: 80%;
     }
 
-    .link_theme_signin {
+    .link_theme_signup {
         font-size: 24.37px;
         display: inline-block;
         padding: 10px 20px 10px 20px;
@@ -138,16 +134,16 @@
     ##Screen = B/w 481px to 767px
 */ 
 @media (min-width: 481px) and (max-width: 767px) {  
-    .content_theme_signin {
+    .content_theme_signup {
         height: 100%;
         width: 100%;
     }
 
-    .forms_theme_signin {
+    .forms_theme_signup {
         width: 70%;
     }
 
-    .link_theme_signin {
+    .link_theme_signup {
         font-size: 15px;
         display: inline-block;
         padding: 10px 20px 10px 20px;
@@ -161,16 +157,16 @@
     ##Screen = B/w 320px to 479px
 */  
 @media (min-width: 320px) and (max-width: 480px) { 
-    .content_theme_signin {
+    .content_theme_signup {
         height: 100%;
         width: 100%;
     }
 
-    .forms_theme_signin {
+    .forms_theme_signup {
         width: 70%;
     }
 
-    .link_theme_signin {
+    .link_theme_signup {
         font-size: 15px;
         display: inline-block;
         padding: 10px 20px 10px 20px;
