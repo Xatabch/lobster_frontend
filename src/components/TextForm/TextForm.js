@@ -12,7 +12,7 @@ export default class TextForm extends React.Component {
                  type={this.props.inputType} 
                  value={this.props.inputValue} 
                  onChange={(event) => {this.props.onChange(event.target.value)}} 
-                 onBlur={() => {this.props.onBlur()}} />
+                 onBlur={() => {this.props.onBlur ? this.props.onBlur() : null }} />
           {this.props.errorText ? <div className="text-form__error-text">{this.props.errorText}</div> : null}
         </div>
       )
