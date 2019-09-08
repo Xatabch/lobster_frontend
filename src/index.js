@@ -19,6 +19,7 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
             <Route path="/" component={SignInScreen} />
+            <Route path="/signin" component={SignInScreen} />
         </Router>
     </Provider>,
     document.getElementById('root')

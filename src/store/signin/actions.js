@@ -7,7 +7,7 @@ export function enterLogin(char) {
 }
 
 export function checkLogin() {
-    return async function(dispatch) {
+    return async function(dispatch, getState) {
         // Сделать запрос за тем, существует ли такой логин, если да, то ничего не dispatch
         // если нет, то издать dispatch loginError с текстом "Пользователь не присутствует в системе"
     }

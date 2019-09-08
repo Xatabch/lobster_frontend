@@ -1,0 +1,149 @@
+.text-form__input {
+    display: block;
+    font-family: europa, sans-serif;
+    font-weight: normal;
+    border: none;
+    border-bottom: 2px solid black;
+    padding: 10px;
+    width: 95%;
+}
+
+.text-form__input:focus {
+    outline: none;
+}
+
+.text-form__label {
+    font-family: europa, sans-serif;
+    font-weight: normal;
+}
+
+.text-form__description {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 300;
+}
+
+.text-form__error-text {
+    position: absolute;
+    color: red;
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 300;
+}
+
+/* 
+    ##Device = Desktops
+    ##Screen = 1281px to higher resolution desktops
+*/
+@media (min-width: 1281px) {
+    .text-form__label {
+        font-size: 24.37px;
+    }
+
+    .text-form__error-text,
+    .text-form__description,
+    .text-form__input {
+      font-size: 15px;
+    }
+
+    .text-form__error-text {
+        bottom: 10px;
+    }
+
+}
+  
+/* 
+    ##Device = Laptops, Desktops
+    ##Screen = B/w 1025px to 1280px
+*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .text-form__label {
+        font-size: 24.37px;
+    }
+
+    .text-form__error-text,
+    .text-form__description {
+      font-size: 15px;
+    }
+
+    .text-form__error-text {
+        bottom: 10px;
+    }
+}
+  
+/* 
+    ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+    .text-form__label {
+        font-size: 24.37px;
+    }
+
+    .text-form__error-text,
+    .text-form__description {
+      font-size: 15px;
+    }
+
+    .text-form__error-text {
+        bottom: 10px;
+    }
+}
+  
+/* 
+    ##Device = Tablets, Ipads (landscape)
+    ##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) { 
+    .text-form__label {
+        font-size: 24.37px;
+    }
+
+    .text-form__error-text,
+    .text-form__description {
+      font-size: 15px;
+    }
+
+    .text-form__error-text {
+        bottom: 10px;
+    }
+}
+  
+/* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+*/ 
+@media (min-width: 481px) and (max-width: 767px) {  
+    .text-form__label {
+        font-size: 15px;
+    }
+
+    .text-form__error-text,
+    .text-form__description {
+      font-size: 9.27px;
+    }
+
+    .text-form__error-text {
+        bottom: 15px;
+    }
+}
+
+  
+/* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+*/  
+@media (min-width: 320px) and (max-width: 480px) { 
+    .text-form__label {
+        font-size: 15px;
+    }
+
+    .text-form__error-text,
+    .text-form__description {
+      font-size: 9.27px;
+    }
+
+    .text-form__error-text {
+        bottom: 15px;
+    }
+}
