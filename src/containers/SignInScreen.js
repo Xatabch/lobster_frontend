@@ -7,9 +7,12 @@ import * as signinSelectors from '../store/signin/reducer';
 
 import Container from '../components/Container/Container';
 import Content from '../components/Content/Content';
-import Title from '../components/Title/Title';
-import Subtitle from '../components/Subtitle/Subtitle';
+import Bar from '../components/Bar/Bar';
+import Head from '../components/Head/Head';
+import Logo from '../components/Logo/Logo';
+import Links from '../components/Links/Links';
 import Forms from '../components/Forms/Forms';
+import Post from '../components/Post/Post';
 import TextForm from '../components/TextForm/TextForm';
 import FormButton from '../components/FormButton/FormButton';
 import { Link } from 'react-router';
@@ -31,27 +34,48 @@ class SignInScreen extends Component {
         return ( 
             <Container modifiers="container_theme_signin">
                 <Content modifiers="content_theme_signin">
-                    <Title modifiers="title_theme_center" titleText="Lobster" />
-                    <Subtitle modifiers="subtitle_theme_center subtitle_theme_signin" subtitleText="Sign in" />
-                    <Forms modifiers="forms_theme_signin">
-                        <TextForm 
-                            labelText="Email or login"
-                            inputType="text"
-                            modifiers="text-form_theme_signin"
-                            errorText={this.props.loginError}
-                            inputValue={this.props.login}
-                            onChange={this.onChangeLogin.bind(this)} 
-                            onBlur={this.onLoginBlur.bind(this)} />
-                        <TextForm 
-                            labelText="Password"
-                            inputType="password"
-                            modifiers="text-form_theme_signin"
-                            errorText={this.props.passwordError}
-                            inputValue={this.props.password}
-                            onChange={this.onChangePassword.bind(this)} />
-                        <FormButton modifiers="form-button_theme_signin" buttonText="Sign In"/>
-                    </Forms>
-                    <Link className="link link_theme_signin" to={"/signup"}>Sign Up</Link>
+                    <Head>
+                        <Logo />
+                    </Head>
+                    <Bar modifiers="bar_theme_left">
+                        <Post photoSrc="https://dribbble.s3.amazonaws.com/users/1619633/screenshots/7105405/downloads/Buffalo%201.png"
+                            headerText="Click on me"
+                            author="Ivan"
+                            date="31.08.2019"
+                            authorModifiers="item_theme_author"
+                            dateModifiers="item_theme_create-date"
+                            isOpen={false} >
+                        <h1 className="text__header">Hello world message</h1>
+                        <p className="text__paragraph">Hello, and welcome to our social network Lobster</p>
+                        </Post>
+                    </Bar>
+                    <Bar modifiers="bar_theme_right">
+                        <Content modifiers="content_theme_forms">
+                            <Links modifiers="links_theme_signin">
+                                <Link className="link link_theme_active" to="/signin">Sign in</Link>
+                                <span className="or">or</span>
+                                <Link className="link" to="/signup">Sign up</Link>
+                            </Links>
+                            <Forms modifiers="forms_theme_signin">
+                                <TextForm labelText="email or login"
+                                          inputType="text"
+                                          placeholderText="Enter your email"
+                                          modifiers="text-form_theme_signin"
+                                          errorText={this.props.loginError}
+                                          inputValue={this.props.login}
+                                          onChange={this.onChangeLogin.bind(this)}
+                                          onBlur={this.onLoginBlur.bind(this)} />
+                                <TextForm labelText="password"
+                                          inputType="password"
+                                          placeholderText="Enter your password"
+                                          modifiers="text-form_theme_signin"
+                                          errorText={this.props.passwordError}
+                                          inputValue={this.props.password}
+                                          onChange={this.onChangePassword.bind(this)} />
+                                <FormButton modifiers="form-button_theme_signin" buttonText="Sign in" />
+                            </Forms>
+                        </Content>
+                    </Bar>
                 </Content>
             </Container>
         );

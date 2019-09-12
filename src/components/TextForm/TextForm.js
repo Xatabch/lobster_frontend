@@ -7,8 +7,8 @@ export default class TextForm extends React.Component {
       return (
         <div className={classnames('text-form', this.props.modifiers)}>
           <label className="text-form__label">{this.props.labelText}</label>
-          {this.props.descriptionText ? <div className="text-form__description">{this.props.descriptionText}</div> : null}
-          <input className="text-form__input" 
+          <input className={classnames('text-form__input', this.props.errorText ? 'text-form_theme_error' : '')}
+                 placeholder={this.props.placeholderText ? this.props.placeholderText : ''}
                  type={this.props.inputType} 
                  value={this.props.inputValue} 
                  onChange={(event) => {this.props.onChange(event.target.value)}} 
