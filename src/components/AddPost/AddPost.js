@@ -139,12 +139,7 @@ export default class AddPost extends Component {
                             <div className="addpost__attach">
                                 <button className={classnames('attach__button', 
                                                    this.state.attachOpen ? 'attach__button_theme_open' : '')}
-                                        onClick={() => this.onOpenButtonClick()}>
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M12 5V19" stroke="#FFFEFE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                        <path d="M5 12H19" stroke="#FFFEFE" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                                    </svg>
-                                </button>
+                                        onClick={() => this.onOpenButtonClick()}>+</button>
                             <div className={classnames('attach__photo', 
                                                        this.state.attachOpen  ? '' : 'attach_theme_hidden', 
                                                        this.state.attachOpen  ? 'attach__photo_theme_open' : '')}>
