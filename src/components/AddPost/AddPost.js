@@ -41,7 +41,7 @@ export default class AddPost extends Component {
         if(!e.target.classList.contains('addpost_theme_default')) {
             const enterIndex = this.state.postText.indexOf(this.state.enterSym);
 
-            if (enterIndex !== -1) {
+            if (enterIndex !== -1 && !this.state.enterText) {
                 const postText = [...this.state.postText];
                 postText.splice(enterIndex, 1);
 
@@ -110,6 +110,8 @@ export default class AddPost extends Component {
                     formActive: false,
                     postText: postText,
                 });
+
+                e.target.blur();
             } else {
                 const textIndex = this.state.postText.indexOf(this.state.enterText);
                 postText.splice(textIndex, 1, text, this.state.enterSym);
