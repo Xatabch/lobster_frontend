@@ -10,6 +10,17 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.(svg)$/i,
+        use: [
+          {
+            loader: 'file-loader', 
+            options: {
+              name: 'img/[contenthash].[ext]'
+          },
+        },
+        ]
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: ["babel-loader"]

@@ -27,6 +27,7 @@
 
 .attach__button {
     display: flex;
+    justify-content: center;
     outline: none;
     cursor: pointer;
     width: 30px;
@@ -55,6 +56,7 @@
 
 .photo__button {
     display: flex;
+    justify-content: center;
     outline: none;
     cursor: pointer;
     width: 30px;
