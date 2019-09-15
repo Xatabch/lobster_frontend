@@ -107,14 +107,12 @@ export default class AddPost extends Component {
                     formActive: false,
                     postText: postText,
                 });
-
-                e.target.blur();
             } else {
                 const textIndex = this.state.postText.indexOf(this.state.enterText);
-                postText.splice(textIndex, 1, e.target.textContent, this.state.enterSym);
+                postText.splice(textIndex, 1, text, this.state.enterSym);
 
                 this.setState({
-                    postText: [...postText],
+                    postText: postText,
                 });
             }
 
