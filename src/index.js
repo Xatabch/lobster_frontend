@@ -10,6 +10,8 @@ import 'normalize.css';
 
 import SignInScreen from './containers/SignInScreen';
 import SignUpScreen from './containers/SignUpScreen';
+import ProfileScreen from './containers/ProfileScreen';
+import AddPostScreen from './containers/AddPostScreen';
 
 import * as reducers from './store/reducers';
 
@@ -22,6 +24,8 @@ ReactDOM.render(
             <Route path="/" component={SignInScreen} />
             <Route path="/signin" component={SignInScreen} />
             <Route path="/signup" component={SignUpScreen} />
+            <Route path="/profile" component={ProfileScreen} />
+            <Route path="/addpost" component={AddPostScreen} />
         </Router>
     </Provider>,
     document.getElementById('root')

@@ -1,0 +1,101 @@
+.addpost {
+    width: 80%;
+    height: 70%;
+}
+
+.addpost__input {
+    user-select: none;
+    display: flex;
+    align-content: center;
+}
+
+.addpost__input:focus {
+    outline: none;
+}
+
+.addpost_theme_default {
+    font-family: 'Roboto';
+    font-weight: 300;
+    color: #B5B5B5;
+    font-size: 30px;
+}
+
+.addpost__attach {
+    padding: 20px 0 0 0;
+    display: flex;
+}
+
+.attach__button {
+    display: flex;
+    outline: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 1px solid white;
+    background: none;
+    transition: .2s linear all;
+}
+
+.attach__button_theme_open {
+    transform: rotate(45deg);
+}
+
+.attach__photo {
+    display: flex;
+    outline: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 1px solid white;
+    transition: .2s linear all;
+    margin-left: 10px;
+}
+
+.photo__button {
+    display: flex;
+    outline: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: none;
+    transition: .2s linear all;
+    background: none;
+}
+
+.attach__photo input[type=file] {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.attach_theme_hidden {
+    display: none;
+}
+
+@keyframes open {
+    from {
+      transform: scale(0);
+    }
+    
+    to {
+      transform: scale(1);
+    }
+  }
+
+.attach__photo_theme_open {
+    animation: open 150ms linear forwards;
+}
+
+.addpost__input_theme_active {
+    font-family: 'Roboto';
+    font-weight: 300;
+    color: white;
+    font-size: 30px;
+}
+
