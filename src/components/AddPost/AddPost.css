@@ -2,8 +2,8 @@
     width: 100%;
     height: 70%;
     overflow: scroll;
-    padding: 9% 10% 1% 10%;
-    z-index: 1000;
+    padding: 6% 20% 0 20%;
+    z-index: 2;
 }
 
 .addpost__input {
@@ -34,5 +34,6 @@
 .addpost__image {
     display: flex;
     justify-content: center;
+    padding: 20px 0 20px 0;
 }
 

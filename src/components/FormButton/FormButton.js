@@ -4,6 +4,7 @@ import './FormButton.css';
 
 export default function FormButton(props) {
     return (
-      <button className={classnames('form-button', props.modifiers)}>{props.buttonText}</button>
+      <button className={classnames('form-button', props.modifiers)}
+              onClick={() => {props.onClick()}}>{props.buttonText}</button>
     )
 }

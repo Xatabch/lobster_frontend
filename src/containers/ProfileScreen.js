@@ -20,10 +20,10 @@ class ProfileScreen extends Component {
     render() {
         return ( 
             <Container>
-                <Head>
-                    <Logo />
-                </Head>
                 <Content modifiers="content_theme_profile">
+                    <Head>
+                        <Logo />
+                    </Head>
                     <Profile modifiers="profile_theme_profile" 
                              profileLogin={this.props.login}
                              profileFollowers={this.props.profileFollowers}

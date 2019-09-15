@@ -11,10 +11,11 @@ import Head from '../components/Head/Head';
 import Logo from '../components/Logo/Logo';
 import Navbar from '../components/Navbar/Navbar';
 import AddPost from '../components/AddPost/AddPost';
+import FormButton from '../components/FormButton/FormButton';
 
 class AddPostScreen extends Component {
 
-    onTextInput(text) {
+    onChangeText(text) {
         this.props.dispatch(addPostActions.enterText(text));
     }
 
@@ -22,14 +23,21 @@ class AddPostScreen extends Component {
         this.props.dispatch(addPostActions.uploadPhoto(e.target, hash));
     }
 
+    onSendPost() {
+        this.props.dispatch(addPostActions.sendPost());
+    }
+
     render() {
         return ( 
             <Container>
-                <Head>
-                    <Logo />
-                </Head>
                 <Content modifiers="content_theme_addpost">
-                    <AddPost onTextInput={this.onTextInput.bind(this)}
+                <Head modifiers="head_theme_addpost">
+                    <Logo />
+                    <FormButton modifiers="form-button_theme_addpost" 
+                                buttonText="Publish"
+                                onClick={this.onSendPost.bind(this)} />
+                </Head>
+                    <AddPost onChangeText={this.onChangeText.bind(this)}
                              onUploadPhoto={this.onUploadPhoto.bind(this)} />
                 </Content>
                 <Navbar activeLink="addpost"/>
@@ -40,8 +48,7 @@ class AddPostScreen extends Component {
 
 function mapStateToProps(state) {
     return { 
-        postText: addPostSelectors.getText(state),
-        postPhotos: addPostSelectors.getPhotos(state)
+        postText: addPostSelectors.getText(state)
     };
 }
 

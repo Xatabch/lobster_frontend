@@ -79,6 +79,8 @@ export default class AddPost extends Component {
                 postText.splice(emptyIndex, 1);
             }
 
+            this.props.onChangeText(postText.filter(item => item !== this.state.enterSym));
+
             this.setState(state => ({
                 postText: [...postText, state.enterSym]
             }));
@@ -93,10 +95,12 @@ export default class AddPost extends Component {
                 const enterIndex = this.state.postText.indexOf(this.state.enterSym);
                 postText.splice(enterIndex, 0, this.state.enterText);
 
+                this.props.onChangeText(postText.filter(item => item !== this.state.enterSym));
+
                 this.setState({
                     postText: postText,
                     formActive: false
-                })
+                });
             }
         }
     }
@@ -136,12 +140,15 @@ export default class AddPost extends Component {
                 this.setState({
                     postText: postText,
                     formActive: false
-                })
+                });
+
+                this.props.onChangeText(postText.filter(item => item !== this.state.enterSym));
             }
         }
     }
 
     render() {
+        // console.log(this.state.postText, this.state.postPhotos);
         return (
             <div className={classnames('addpost', this.props.modifiers)}>
                 {this.state.postText.map((text, i) => {

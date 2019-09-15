@@ -2,8 +2,8 @@ import Immutable from 'seamless-immutable';
 import * as types from './actionTypes';
 
 const initialState = Immutable({
-    postPhotos: [],
-    postText: '',
+    postPhotos: {},
+    postText: [],
 });
 
 export default function reduce(state = initialState, action = {}) {
@@ -14,8 +14,7 @@ export default function reduce(state = initialState, action = {}) {
             });
         case types.UPLOAD_PHOTO:
             return state.merge({
-                postPhotos: action.postPhotos,
-                postText: action.postText
+                postPhotos: action.postPhotos
             })
         default:
             return state;
@@ -23,6 +22,4 @@ export default function reduce(state = initialState, action = {}) {
     }
 }
 
-export const getText = state => state.addpost.postText;
-
-export const getPhotos = state => [...state.addpost.postPhotos];
+export const getText = state => [...state.addpost.postText];
