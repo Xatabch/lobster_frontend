@@ -17,15 +17,15 @@ export default class AddPost extends Component {
     }
 
     componentDidMount() {
-        this.setState({
-            postText: [...this.state.postText, this.state.enterSym]
-        })
+        this.setState(state => ({
+            postText: [...state.postText, state.enterSym]
+        }));
     }
 
     onOpenButtonClick() {
-        this.setState({
-            attachOpen: !this.state.attachOpen
-        })
+        this.setState(state => ({
+            attachOpen: !state.attachOpen
+        }));
     }
 
     onInput(text) {
@@ -58,9 +58,9 @@ export default class AddPost extends Component {
 
     onBlur() {
         if (!this.state.postText.includes(this.state.enterSym)) {
-            this.setState({
-                postText: [...this.state.postText, this.state.enterSym]
-            });
+            this.setState(state => ({
+                postText: [...state.postText, state.enterSym]
+            }));
         } else if (!this.state.enterText) {
             if(!this.props.postText) {
                 this.setState({
@@ -82,10 +82,10 @@ export default class AddPost extends Component {
             postText.splice(enterIndex, 1)
             postPhotos[photoHash] = e.target.result;
 
-            this.setState({
+            this.setState(state => ({
                 postPhotos: postPhotos,
-                postText: [...postText, photoHash, this.state.enterSym]
-            });
+                postText: [...postText, photoHash, state.enterSym]
+            }));
 
         }
 
@@ -93,19 +93,20 @@ export default class AddPost extends Component {
         this.props.onUploadPhoto(e, photoHash);
     }
 
-    onKeyDown(e) {
+   onKeyDown(e) {
         if(e.key === 'Enter') {
             const enterIndex = this.state.postText.indexOf(this.state.enterSym);
             const postText = [...this.state.postText];
+            const text = e.target.textContent
 
             if (enterIndex !== -1) {
-                postText.splice(enterIndex, 1);
+                postText.splice(enterIndex, 1, text, this.state.enterSym);
 
-                this.setState({
+                this.setState(state => ({
                     enterText: '',
                     formActive: false,
-                    postText: [...postText, e.target.textContent, this.state.enterSym],
-                });
+                    postText: postText,
+                }));
 
                 e.target.blur();
             } else {
@@ -115,8 +116,6 @@ export default class AddPost extends Component {
                 this.setState({
                     postText: [...postText],
                 });
-
-                e.target.blur();
             }
 
             this.props.onTextInput(e.target.textContent);
@@ -124,7 +123,6 @@ export default class AddPost extends Component {
     }
 
     render() {
-        console.log(this.state.postText)
         return (
             <div className={classnames('addpost', this.props.modifiers)}>
                 {this.state.postText.map((text) => {
