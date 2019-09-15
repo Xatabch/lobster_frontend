@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import './AddPost.css';
+import nanoid from 'nanoid';
 
-import attach from '../../../public/img/attach.svg';
-import camera from '../../../public/img/camera.svg';
+import AttachButton from '../AttachButton/AttachButton';
+import UploadPhoto from '../UploadPhoto/UploadPhoto';
 
 export default class AddPost extends Component {
     constructor(state) {
         super(state);
 
         this.state = {
-            attachOpen: false,
-            formActive: false,
-            postPhotos: {},
-            enterSym: Symbol.for('enter'),
-            postText: [],
-            enterText: ''
+            attachOpen: false, // нажата ли кнопка attach
+            formActive: false, // активна ли форма
+            postPhotos: {}, // прикрепленные фотографии поста(ключ, сгенрированный хеш, значение фото в base64)
+            enterSym: Symbol.for('enter'), // "позиция" enter
+            postText: [], // текст поста, включая позицию enter, фотографии
+            enterText: '' // текст формы, на который в данный момент сфокусированны
         }
     }
 
@@ -31,64 +32,91 @@ export default class AddPost extends Component {
         }));
     }
 
-    onInput(text) {
+    onInput(e) {
+        const text = e.target.textContent;
+
         this.setState({
-            enterText: text
-        })
+            enterText: text,
+        });
     }
 
     onFocus(e) {
+        const input = document.querySelector('.addpost_theme_default');
+        const isInputText = input.classList.contains('addpost__input_theme_active');
+
         if(!e.target.classList.contains('addpost_theme_default')) {
             const enterIndex = this.state.postText.indexOf(this.state.enterSym);
+            const postText = [...this.state.postText];
 
-            if (enterIndex !== -1 && !this.state.enterText) {
-                const postText = [...this.state.postText];
+            if (enterIndex !== -1) {
                 postText.splice(enterIndex, 1);
+            }
 
-                this.setState({
-                    enterText: e.target.textContent,
-                    postText: postText
-                });
-            }
+            this.setState({
+                enterText: e.target.textContent,
+                postText: postText
+            });
+
         } else {
-            if(!this.props.postText) {
-                this.setState({
-                    formActive: true
-                });
-            }
+            this.setState({
+                enterText: !isInputText ? '' : e.target.textContent,
+                formActive: true
+            });
         }
     }
 
-    onBlur() {
+    onBlur(e) {
+        const postText = [...this.state.postText];
+
         if (!this.state.postText.includes(this.state.enterSym)) {
+            if (!e.target.classList.contains('addpost_theme_default')) {
+                postText[e.target.dataset.num] = e.target.textContent;
+            }
+
+            const emptyIndex = postText.indexOf('');
+
+            if (emptyIndex !== -1) {
+                postText.splice(emptyIndex, 1);
+            }
+
             this.setState(state => ({
-                postText: [...state.postText, state.enterSym]
+                postText: [...postText, state.enterSym]
             }));
-        } else if (!this.state.enterText) {
-            if(!this.props.postText) {
+        } else {
+            const isDefault = e.target.classList.contains('addpost_theme_default');
+
+            if (!this.state.enterText) {
                 this.setState({
                     formActive: false
                 });
+            } else if (isDefault) {
+                const enterIndex = this.state.postText.indexOf(this.state.enterSym);
+                postText.splice(enterIndex, 0, this.state.enterText);
+
+                this.setState({
+                    postText: postText,
+                    formActive: false
+                })
             }
         }
     }
 
     onUploadPhoto(e) {
-        var reader = new FileReader();
-        const photoHash = Math.random().toString(36).substring(2, 10);
+        let reader = new FileReader();
+        const photoHash = nanoid();
 
         reader.onload = (e) => {
             const enterIndex = this.state.postText.indexOf(this.state.enterSym);
             const postText = [...this.state.postText];
             const postPhotos = {...this.state.postPhotos};
 
-            postText.splice(enterIndex, 1)
+            postText.splice(enterIndex, 1, photoHash, this.state.enterSym);
             postPhotos[photoHash] = e.target.result;
 
-            this.setState(state => ({
+            this.setState({
                 postPhotos: postPhotos,
-                postText: [...postText, photoHash, state.enterSym]
-            }));
+                postText: postText
+            });
 
         }
 
@@ -98,40 +126,28 @@ export default class AddPost extends Component {
 
    onKeyDown(e) {
         if(e.key === 'Enter') {
-            const enterIndex = this.state.postText.indexOf(this.state.enterSym);
             const postText = [...this.state.postText];
-            const text = e.target.textContent
+            const isDefault = e.target.classList.contains('addpost_theme_default');
 
-            if (enterIndex !== -1) {
-                postText.splice(enterIndex, 1, text, this.state.enterSym);
-
-                this.setState({
-                    enterText: '',
-                    formActive: false,
-                    postText: postText,
-                });
-
-                e.target.blur();
-            } else {
-                const textIndex = this.state.postText.indexOf(this.state.enterText);
-                postText.splice(textIndex, 1, text, this.state.enterSym);
+            if(isDefault) {
+                const enterIndex = this.state.postText.indexOf(this.state.enterSym);
+                postText.splice(enterIndex, 0, this.state.enterText);
 
                 this.setState({
                     postText: postText,
-                });
+                    formActive: false
+                })
             }
-
-            this.props.onTextInput(e.target.textContent);
         }
     }
 
     render() {
         return (
             <div className={classnames('addpost', this.props.modifiers)}>
-                {this.state.postText.map((text) => {
+                {this.state.postText.map((text, i) => {
                     if (typeof text === 'symbol' && Symbol.keyFor(text)) {
                         return (
-                            <div key={':enter:'} className="addpost__form">
+                            <div key={i} className="addpost__form">
                                 <span contentEditable="true" 
                                       suppressContentEditableWarning={true} 
                                       className={classnames('addpost__input', 
@@ -139,40 +155,34 @@ export default class AddPost extends Component {
                                                             this.state.formActive ? 'addpost__input_theme_active' : '')}
                                       onFocus={(e) => {this.onFocus(e)} }
                                       onBlur={(e) => {this.onBlur(e)}}
-                                      onInput={(e) => {this.onInput(e.target.textContent)}}
-                                      onKeyDown={(e) => {this.onKeyDown(e)}}>{!this.state.formActive ? 'Input text here...' : ''}</span>
-                                <div className="addpost__attach">
-                                    <button className={classnames('attach__button', 
-                                                                  this.state.attachOpen ? 'attach__button_theme_open' : '')}
-                                            onClick={() => this.onOpenButtonClick()}>
-                                                <img src={attach} />
-                                    </button>
-                                    <div className={classnames('attach__photo', 
-                                                               this.state.attachOpen ? 'attach__photo_theme_open' : 'attach_theme_hidden')}>
-                                        <button className="photo__button">
-                                            <img src={camera} />
-                                        </button>
-                                        <input type="file" 
-                                               className="photo__input" 
-                                               onChange={(e) => {this.onUploadPhoto(e)}} multiple/>
-                                    </div>
-                                </div>
+                                      onInput={(e) => {this.onInput(e)}}
+                                      onKeyDown={(e) => {this.onKeyDown(e)}}
+                                      data-num={i}>{!this.state.formActive ? 'Input text here...' : ''}</span>
+                                <AttachButton attachOpen={this.state.attachOpen}
+                                              onOpenButtonClick={this.onOpenButtonClick.bind(this)}>
+                                    <UploadPhoto attachOpen={this.state.attachOpen}
+                                                 onUploadPhoto={this.onUploadPhoto.bind(this)} />
+                                </AttachButton>
                             </div>
                         )
                     } else if (this.state.postPhotos[text]){
                         return (
-                            <img key={text} src={this.state.postPhotos[text]} />
+                            <figure key={text} className="addpost__image">
+                                <img src={this.state.postPhotos[text]} />
+                            </figure>
                         )
                     } else {
                         return (
-                            <span key={text} 
+                            <span key={i} 
                                 contentEditable="true" 
                                 suppressContentEditableWarning={true} 
                                 className={classnames('addpost__input',
-                                                        'addpost__input_theme_active')}
+                                                      'addpost__input_theme_active')}
                                 onFocus={(e) => {this.onFocus(e)} }
                                 onBlur={(e) => {this.onBlur(e)}}
-                                onKeyDown={(e) => {this.onKeyDown(e)}}>{text}</span>
+                                onInput={(e) => {this.onInput(e)}}
+                                onKeyDown={(e) => {this.onKeyDown(e)}}
+                                data-num={i}>{text}</span>
                         )
                     }
                 })}
