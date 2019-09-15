@@ -1,0 +1,52 @@
+.upload-photo {
+    display: flex;
+    position: relative;
+    outline: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: 1px solid white;
+    transition: .2s linear all;
+    margin-left: 10px;
+}
+
+.upload-photo__button {
+    display: flex;
+    justify-content: center;
+    outline: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    border: none;
+    transition: .2s linear all;
+    background: none;
+}
+
+.upload-photo input[type=file] {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.upload-photo_theme_hidden {
+    display: none;
+}
+
+@keyframes open {
+    from {
+      transform: scale(0);
+    }
+    
+    to {
+      transform: scale(1);
+    }
+  }
+
+.upload-photo_theme_open {
+    animation: open 150ms linear forwards;
+}
