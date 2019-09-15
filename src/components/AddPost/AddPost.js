@@ -102,11 +102,11 @@ export default class AddPost extends Component {
             if (enterIndex !== -1) {
                 postText.splice(enterIndex, 1, text, this.state.enterSym);
 
-                this.setState(state => ({
+                this.setState({
                     enterText: '',
                     formActive: false,
                     postText: postText,
-                }));
+                });
 
                 e.target.blur();
             } else {
