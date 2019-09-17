@@ -30,13 +30,13 @@ class AddPostScreen extends Component {
     render() {
         return ( 
             <Container>
-                <Content modifiers="content_theme_addpost">
                 <Head modifiers="head_theme_addpost">
                     <Logo />
                     <FormButton modifiers="form-button_theme_addpost" 
                                 buttonText="Publish"
                                 onClick={this.onSendPost.bind(this)} />
                 </Head>
+                <Content modifiers="content_theme_addpost">
                     <AddPost onChangeText={this.onChangeText.bind(this)}
                              onUploadPhoto={this.onUploadPhoto.bind(this)} />
                 </Content>

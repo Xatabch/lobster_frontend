@@ -1,0 +1,1 @@
+export const ENTER_LOGIN = 'search.ENTER_LOGIN';

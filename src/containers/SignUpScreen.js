@@ -53,10 +53,10 @@ class SignUpScreen extends Component {
     render() {
         return ( 
             <Container modifiers="container_theme_singup">
+                <Head>
+                    <Logo />
+                </Head>
                 <Content modifiers="content_theme_singup">
-                    <Head>
-                        <Logo />
-                    </Head>
                     <Bar modifiers="bar_theme_left">
                         <Post photoSrc="https://dribbble.s3.amazonaws.com/users/1619633/screenshots/7105405/downloads/Buffalo%201.png"
                             headerText="Click on me"

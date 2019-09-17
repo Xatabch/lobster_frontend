@@ -1,0 +1,126 @@
+.content_theme_search {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: #2B303A;
+    height: 90%;
+
+    padding: 100px 0 0 0;
+}
+
+.forms_theme_search {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    height: 100px;
+    min-width: 200px;
+    width: 50vw;
+    max-width: 600px;
+}
+
+.text-form_theme_search {
+    width: 50%;
+}
+
+.form-button_theme_search {
+    margin: 0;
+}
+
+/* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+*/
+  
+@media (min-width: 481px) and (max-width: 767px) {
+    .content_theme_search {
+        padding: 0;
+    }
+
+    .forms_theme_search {
+        width: 90%;
+    }
+
+    .form-button_theme_search {
+        padding: 10px 25px 10px 25px;
+    }
+}
+  
+/* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+*/
+  
+@media (min-width: 320px) and (max-width: 480px) {
+    .content_theme_search {
+        padding: 0;
+    }
+
+    .forms_theme_search {
+        width: 90%;
+    }
+
+    .form-button_theme_search {
+        padding: 10px 25px 10px 25px;
+    }
+}
+
+
+
+/* usesr-list */
+
+.user-list {
+    padding: 0;
+    margin: 0;
+    width: 40%;
+    max-width: 600px;
+}
+
+.user-list__user {
+    box-shadow: 0px 0px 100px 3px #1d202782;
+    border-radius: 10px;
+    margin: 50px 0 50px 0;
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 25px;
+    padding: 15px 10px 15px 15px;
+}
+
+.user__link {
+    color: white;
+}
+
+/* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+*/
+  
+@media (min-width: 481px) and (max-width: 767px) {
+    .user-list {
+        padding: 0;
+        width: 85%;
+    }
+
+    .user-list__user {
+        font-size: 15px;
+        margin: 25px 0 25px 0;
+    }
+}
+  
+/* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+*/
+  
+@media (min-width: 320px) and (max-width: 480px) {
+    .user-list {
+        padding: 0;
+        width: 85%;
+    }
+
+    .user-list__user {
+        font-size: 15px;
+        margin: 25px 0 25px 0;
+    }
+}

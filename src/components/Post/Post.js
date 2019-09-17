@@ -2,6 +2,23 @@ import React from 'react';
 import classnames from 'classnames';
 import './Post.css';
 
+function OpenPost(props) {
+  return (
+    <div className="open-post">
+      <div className="post__photos">
+            <div className="post__close" onClick={(e) => props.onClose(e)}></div>
+            <img className="photos__photo" src={props.photoSrc} alt="" />
+            <h1 className="photos__header">{props.headerText}</h1>
+          </div>
+          <div className="post__items">
+            <span className="items__item item_theme_author">{props.author}</span>
+            <span className="items__item">{props.date}</span>
+          </div>
+          <div className="post__text">{props.children}</div>
+        </div>
+  )
+}
+
 export default class Post extends React.Component {
     constructor(props) {
       super(props);
@@ -10,7 +27,7 @@ export default class Post extends React.Component {
       }
     }
     
-    onOpen() {
+    onOpen(e) {
       this.setState({isOpen: true});
     }
 
@@ -22,17 +39,21 @@ export default class Post extends React.Component {
     render() {
       return (
         <div className={classnames('post', this.props.postModifiers, this.state.isOpen ? 'post_theme_open' : '')}
-             onClick={() => this.onOpen()}>
+             onClick={(e) => this.onOpen(e)}>
+            {this.state.isOpen ? (<OpenPost 
+                                            photoSrc={this.props.photoSrc}
+                                            headerText={this.props.headerText}
+                                            author={this.props.author}
+                                            date={this.props.date}
+                                            onClose={this.onClose.bind(this)}>{this.props.children}</OpenPost>) : null}
           <div className="post__photos">
-            {this.state.isOpen ? <div className="post__close" onClick={(e) => this.onClose(e)}></div> : null}
-            <img className="photos__photo" src={this.props.photoSrc} alt="upload error" />
+            <img className="photos__photo" src={this.props.photoSrc} alt="" />
             <h1 className="photos__header">{this.props.headerText}</h1>
           </div>
           <div className="post__items">
             <span className="items__item item_theme_author">{this.props.author}</span>
             <span className="items__item">{this.props.date}</span>
           </div>
-          {this.state.isOpen ? <div className="post__text">{this.props.children}</div> : null}
         </div>
       )
     }

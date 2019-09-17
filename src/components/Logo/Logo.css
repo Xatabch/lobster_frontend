@@ -63,8 +63,8 @@
   
   @media (min-width: 481px) and (max-width: 767px) {
     .logo { 
-      background-size: 40px;
-      width: 100px;
+      background-size: 20px;
+      width: 50px;
     }
   }
   
@@ -75,7 +75,7 @@
   
   @media (min-width: 320px) and (max-width: 480px) {
     .logo { 
-      background-size: 40px;
-      width: 100px;
+      background-size: 20px;
+      width: 50px;
     }
   }

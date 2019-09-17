@@ -1,7 +1,9 @@
 .head {
     position: absolute;
     top: 0;
-    width: 95%;
+    left: 5%;
+    width: 90%;
+    background-color: #2B303A;
 }
 
 /* 
@@ -55,7 +57,7 @@
   
   @media (min-width: 481px) and (max-width: 767px) {
     .head {
-      height: 100px;
+      display: none;
     }
   }
   
@@ -66,6 +68,6 @@
   
   @media (min-width: 320px) and (max-width: 480px) {
     .head {
-      height: 100px;
+      display: none;
     }
   }
