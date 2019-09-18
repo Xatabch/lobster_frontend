@@ -1,0 +1,75 @@
+.bar {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bar_theme_left {
+    background-color: #92DCE5;
+}
+
+.bar_theme_right {
+    background-color: #2B303A;
+}
+  
+/* 
+    ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px
+*/
+  
+@media (min-width: 768px) and (max-width: 1024px) {
+    .bar_theme_left  {
+      display: none;
+    }
+    
+    .bar_theme_right {
+      width: 100%;
+    }
+}
+  
+/* 
+    ##Device = Tablets, Ipads (landscape)
+    ##Screen = B/w 768px to 1024px
+*/
+  
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .bar_theme_left {
+      display: none;
+    }
+    
+    .bar_theme_right {
+      width: 100%;
+    }
+}
+  
+/* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+*/
+  
+@media (min-width: 481px) and (max-width: 767px) {
+    .bar_theme_left {
+      display: none;
+    }
+    
+    .bar_theme_right {
+      width: 100%;
+    }
+}
+  
+/* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+*/
+  
+@media (min-width: 320px) and (max-width: 480px) {
+    .bar_theme_left {
+      display: none;
+    }
+    
+    .bar_theme_right {
+      width: 100%;
+    }
+}

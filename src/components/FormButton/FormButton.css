@@ -1,74 +1,13 @@
 .form-button {
-    font-family: europa, sans-serif;
-    font-weight: normal;
-    background: none;
-    border: 2px solid black;
-    padding: 10px 20px 10px 20px;
-    transition: background-color 300ms linear;
-}
-  
-.form-button:hover {
+    cursor: pointer;
+    margin-top: 49px;
+    font-family: Roboto;
+    font-weight: 500;
     color: white;
-    background-color: black;
-}
-
-/* 
-    ##Device = Desktops
-    ##Screen = 1281px to higher resolution desktops
-*/
-@media (min-width: 1281px) {
-    .form-button {
-        font-size: 24.37px;
-    }
-}
-  
-/* 
-    ##Device = Laptops, Desktops
-    ##Screen = B/w 1025px to 1280px
-*/
-@media (min-width: 1025px) and (max-width: 1280px) {
-    .form-button {
-        font-size: 24.37px;
-    }
-}
-  
-/* 
-    ##Device = Tablets, Ipads (portrait)
-    ##Screen = B/w 768px to 1024px
-*/
-@media (min-width: 768px) and (max-width: 1024px) {
-    .form-button {
-        font-size: 24.37px;
-    }
-}
-  
-/* 
-    ##Device = Tablets, Ipads (landscape)
-    ##Screen = B/w 768px to 1024px
-*/
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) { 
-    .form-button {
-        font-size: 24.37px;
-    }
-}
-  
-/* 
-    ##Device = Low Resolution Tablets, Mobiles (Landscape)
-    ##Screen = B/w 481px to 767px
-*/ 
-@media (min-width: 481px) and (max-width: 767px) {  
-    .form-button {
-        font-size: 15px;
-    }
-}
-  
-/* 
-    ##Device = Most of the Smartphones Mobiles (Portrait)
-    ##Screen = B/w 320px to 479px
-*/  
-@media (min-width: 320px) and (max-width: 480px) { 
-    .form-button {
-        margin: 20px 0 0 0;
-        font-size: 15px;
-    }
+    box-shadow: 0 0 25px 2px #1A1D23;
+    font-size: 13px;
+    border: none;
+    background-color: #92DCE5;
+    padding: 10px 48px 10px 48px;
+    border-radius: 20px;
 }

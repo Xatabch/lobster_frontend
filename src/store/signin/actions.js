@@ -19,7 +19,7 @@ export function enterPassword(char) {
 
 export function checkAuth() {
     return async function(dispatch) {
-        // сделать запрос за проверкой авторизован ли я, если да, то произвести редирект
+        // Cделать запрос за проверкой авторизован ли я, если да, то произвести редирект
         // иначе ничего не делать
         let mockData = {
             response: 200

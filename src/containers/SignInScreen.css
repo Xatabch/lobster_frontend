@@ -1,227 +1,57 @@
-.container_theme_signin {
+.content_theme_signin {
+    height: 100%;
+    width: 100%;
     display: flex;
-    justify-content: center;
+}
+
+.title_theme_signin {
+    width: 45%;
+    margin: 0 auto 0 auto;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
-.content_theme_signin {
-    min-width: 300px;
-    max-width: 500px;
+.links_theme_signin {
+    width: 45%;
+    margin: 0 auto 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .forms_theme_signin {
+    width: 45%;
     margin: 0 auto 0 auto;
+ }
+ 
+
+.or {
+    padding: 0 0 10px 0;
+    font-family: Roboto;
+    font-weight: 300;
+    font-size: 25px;
+    color: rgba(255, 255, 255, 0.3);
 }
 
-.text-form_theme_signin {
-    position: relative;
-}
-
-.link_theme_signin {
-    font-family: europa, sans-serif;
-    font-weight: normal;
-    font-size: 24.37px;
-    text-decoration: none;
-    color: black;
-}
-
-/* 
-    ##Device = Desktops
-    ##Screen = 1281px to higher resolution desktops
-*/
-@media (min-width: 1281px) {
-    .content_theme_signin {
-        height: 90%;
-        width: 50%;
-    }
-
-    .forms_theme_signin {
-        width: 80%;
-    }
-
-    .text-form_theme_signin {
-        padding: 20px 0 40px 0;
-    }
-
-    .subtitle_theme_signin {
-        padding: 40px 0 40px 0;
-    }
-
-    .link_theme_signin {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        width: 20%;
-        position: absolute;
-        right: 0;
-        top: 0;
-        border-left: 2px solid black;
-        transition: 300ms linear;
-    }
-    
-    .link_theme_signin:hover {
-        background-color: black;
-        background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 12L19 12' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M12 5L19 12L12 19' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
-        color: rgba(0, 0, 0, 0);
-    }
-}
-  
-/* 
-    ##Device = Laptops, Desktops
-    ##Screen = B/w 1025px to 1280px
-*/
-@media (min-width: 1025px) and (max-width: 1280px) {
-    .content_theme_signin {
-        height: 90%;
-        width: 100%;
-    }
-
-    .forms_theme_signin {
-        width: 80%;
-    }
-
-    .text-form_theme_signin {
-        padding: 20px 0 40px 0;
-    }
-
-    .subtitle_theme_signin {
-        padding: 40px 0 40px 0;
-    }
-
-    .link_theme_signin {
-        font-size: 24.37px;
-        display: inline-block;
-        padding: 10px 20px 10px 20px;
-        margin: 40px 0 0 50px;
-        border: 2px solid black;
-    }
-}
-  
-/* 
-    ##Device = Tablets, Ipads (portrait)
-    ##Screen = B/w 768px to 1024px
-*/
-@media (min-width: 768px) and (max-width: 1024px) {
-    .content_theme_signin {
-        height: 100%;
-        width: 100%;
-    }
-
-    .forms_theme_signin {
-        width: 80%;
-    }
-
-    .text-form_theme_signin {
-        padding: 20px 0 40px 0;
-    }
-
-    .subtitle_theme_signin {
-        padding: 40px 0 40px 0;
-    }
-
-    .link_theme_signin {
-        font-size: 24.37px;
-        display: inline-block;
-        padding: 10px 20px 10px 20px;
-        margin: 40px 0 0 50px;
-        border: 2px solid black;
-    }
-}
-  
-/* 
-    ##Device = Tablets, Ipads (landscape)
-    ##Screen = B/w 768px to 1024px
-*/
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) { 
-    .content_theme_signin {
-        height: 100%;
-        width: 100%;
-    }
-
-    .text-form_theme_signin {
-        padding: 20px 0 40px 0;
-    }
-
-    .forms_theme_signin {
-        width: 80%;
-    }
-
-    .subtitle_theme_signin {
-        padding: 40px 0 40px 0;
-    }
-
-    .link_theme_signin {
-        font-size: 24.37px;
-        display: inline-block;
-        padding: 10px 20px 10px 20px;
-        margin: 40px 0 0 50px;
-        border: 2px solid black;
-    }
-}
-  
-/* 
+  /* 
     ##Device = Low Resolution Tablets, Mobiles (Landscape)
     ##Screen = B/w 481px to 767px
-*/ 
-@media (min-width: 481px) and (max-width: 767px) {  
-    .content_theme_signin {
-        height: 100%;
-        width: 100%;
-    }
-
-    .forms_theme_signin {
-        width: 70%;
-    }
-
-    .text-form_theme_signin {
-        padding: 20px 0 40px 0;
-    }
-
-    .subtitle_theme_signin {
-        padding: 40px 0 40px 0;
-    }
-
-    .link_theme_signin {
-        font-size: 15px;
-        display: inline-block;
-        padding: 10px 20px 10px 20px;
-        margin: 40px 0 0 75px;
-        border: 2px solid black;
-    }
-}
+  */
   
-/* 
+  @media (min-width: 481px) and (max-width: 767px) {
+    .forms_theme_signin {
+      width: 80%;
+    }
+  }
+  
+  /* 
     ##Device = Most of the Smartphones Mobiles (Portrait)
     ##Screen = B/w 320px to 479px
-*/  
-@media (min-width: 320px) and (max-width: 480px) { 
-    .content_theme_signin {
-        height: 100%;
-        width: 100%;
-    }
-
+  */
+  
+  @media (min-width: 320px) and (max-width: 480px) {    
     .forms_theme_signin {
-        width: 70%;
+      width: 80%;
     }
-
-    .text-form_theme_signin {
-        padding: 20px 0 20px 0;
-    }
-
-    .subtitle_theme_signin {
-        padding: 20px 0 20px 0;
-    }
-
-    .form-button_theme_signin {
-        margin: 20px 0 0 0;
-    }
-
-    .link_theme_signin {
-        font-size: 15px;
-        display: inline-block;
-        padding: 10px 20px 10px 20px;
-        margin: 20px 0 0 15vw;
-        border: 2px solid black;
-    }
-}
+  }
