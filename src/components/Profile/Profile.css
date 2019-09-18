@@ -20,13 +20,13 @@
 }
 
 .profile__followers {
-    width: 110px;
+    width: 100px;
     text-align: center;
     line-height: 30px;
 }
 
 .profile__following {
-    width: 110px;
+    width: 100px;
     text-align: center;
     line-height: 30px;
 }
@@ -40,7 +40,7 @@
 }
 
 .profile__posts {
-    width: 70px;
+    width: 60px;
     text-align: center;
     line-height: 30px;
 }

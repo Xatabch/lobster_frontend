@@ -28,11 +28,26 @@ class API {
             })
         });
 
+        return {
+            status: response.status
+        };
+    }
+
+    async profile({
+        username = ''
+    } = {}) {
+        const response = await fetch(`${this.host}/api/profile/?username=${username}`, {
+            method: 'GET',
+            mode: 'cors',
+            credentials: 'include'
+        });
+
         const data = await response.json();
 
-        console.log(data);
-
-        return data;
+        return {
+            status: response.status,
+            ...data
+        };
     }
 }
 

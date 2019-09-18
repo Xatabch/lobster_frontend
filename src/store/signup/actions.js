@@ -79,20 +79,15 @@ export function signup() {
         }
 
         // 2. Сделать запрос с этими данными
-        const testData = await API.signup({
-            login: 'test7',
-            email: 'test7@mail.ru',
-            password: '12345678' 
+        const data = await API.signup({
+            login: login,
+            email: email,
+            password: password
         });
-
-        // mock
-        let mockData = {
-            status: 200
-        }
 
         // 3. Если статус 200, то произвести редирект на страницу пользователя
         // иначе издать событие ошибки с ее текстом
-        if (mockData.status === 200) {
+        if (data.status === 201) {
             redirect('/profile');
         } else {
             // событие с текстом ошибки, которая пришла с бэка

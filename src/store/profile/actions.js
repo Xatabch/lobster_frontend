@@ -1,18 +1,21 @@
 import * as types from './actionTypes';
-// import API from '../../services/api';
-import { redirect } from '../../services/helpers';
+import API from '../../services/API';
+import { redirect, getAllUrlParams } from '../../services/helpers';
 
 export function getUserProfile() {
     return async dispatch => { 
         // Сделать запрос на сервер за пользователем, указанным в параметрах url
+        const currentURL = window.location.href;
+        const URLparams = getAllUrlParams(currentURL);
 
+        const data = await API.profile({username: URLparams.username});
 
         // Вид данных в котором их нужно будет вернуть с backend
         let mockData = {
-            status: 200,
-            login: 'neiron',
-            profileFollowers: 128,
-            profileFollowing: 33,
+            status: data.status,
+            login: data.login,
+            profileFollowers: data.followers,
+            profileFollowing: data.following,
             profilePosts: 20,
         }
 
