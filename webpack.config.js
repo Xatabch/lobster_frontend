@@ -43,7 +43,7 @@ const common = {
 const devMode = {
   plugins: [
     new webpack.DefinePlugin({
-      HOST: JSON.stringify('http://localhost:8001'),
+      HOST: JSON.stringify('http://localhost:8000'),
     }),
   ]
 };
@@ -51,7 +51,7 @@ const devMode = {
 const prodMode = {
   plugins: [
     new webpack.DefinePlugin({
-      HOST: JSON.stringify('https://lobster.ivanmorozov.now.sh'),
+      HOST: JSON.stringify('https://neiron.pythonanywhere.com'),
     }),
   ]
 };
