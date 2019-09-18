@@ -20,7 +20,7 @@ class ProfileScreen extends Component {
     render() {
         return ( 
             <Container>
-                <Head>
+                <Head modifiers="head_theme_profile">
                     <Logo />
                 </Head>
                 <Content modifiers="content_theme_profile">

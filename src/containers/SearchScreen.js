@@ -31,7 +31,7 @@ class SearchScreen extends Component {
     render() {
         return ( 
             <Container>
-                <Head>
+                <Head modifiers="head_theme_search">
                     <Logo />
                 </Head>
                 <Content modifiers="content_theme_search">

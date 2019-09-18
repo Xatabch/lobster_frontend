@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-// import API from '../../services/api';
+import API from '../../services/api';
 import { redirect } from '../../services/helpers';
 
 export function enterLogin(char) {
@@ -79,6 +79,12 @@ export function signup() {
         }
 
         // 2. Сделать запрос с этими данными
+        const testData = await API.signup({
+            login: 'test7',
+            email: 'test7@mail.ru',
+            password: '12345678' 
+        });
+
         // mock
         let mockData = {
             status: 200

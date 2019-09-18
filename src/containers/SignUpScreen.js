@@ -50,6 +50,11 @@ class SignUpScreen extends Component {
         this.props.dispatch(signupActions.checkPasswordRepeat());
     }
 
+    onSubmit(e) {
+        e.preventDefault();
+        this.props.dispatch(signupActions.signup());
+    }
+
     render() {
         return ( 
             <Container modifiers="container_theme_singup">
@@ -65,7 +70,6 @@ class SignUpScreen extends Component {
                             authorModifiers="item_theme_author"
                             dateModifiers="item_theme_create-date"
                             isOpen={false} >
-                        <h1 className="text__header">Hello world message</h1>
                         <p className="text__paragraph">Hello, and welcome to our social network Lobster</p>
                         </Post>
                     </Bar>
@@ -76,7 +80,8 @@ class SignUpScreen extends Component {
                                 <span className="or">or</span>
                                 <Link className="link link_theme_active" to="/signup">Sign up</Link>
                             </Links>
-                            <Forms modifiers="forms_theme_singup">
+                            <Forms onSubmit={this.onSubmit.bind(this)}
+                                   modifiers="forms_theme_singup">
                                 <TextForm labelText="email"
                                           inputType="text"
                                           placeholderText="Enter your email"

@@ -45,7 +45,6 @@ class SignInScreen extends Component {
                             authorModifiers="item_theme_author"
                             dateModifiers="item_theme_create-date"
                             isOpen={false} >
-                        <h1 className="text__header">Hello world message</h1>
                         <p className="text__paragraph">Hello, and welcome to our social network Lobster</p>
                         </Post>
                     </Bar>
