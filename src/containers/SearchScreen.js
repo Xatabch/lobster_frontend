@@ -13,9 +13,19 @@ import TextForm from '../components/TextForm/TextForm';
 import FormButton from '../components/FormButton/FormButton';
 import Logo from '../components/Logo/Logo';
 import Navbar from '../components/Navbar/Navbar';
+import UserList from '../components/UserList/UserList';
 
 class SearchScreen extends Component {
     componentDidMount() {
+    }
+
+    onChange(char) {
+        this.props.dispatch(searchActions.enterLogin(char));
+    }
+
+    onSubmitSearch(e) {
+        e.preventDefault();
+        this.props.dispatch(searchActions.searchUser());
     }
 
     render() {
@@ -25,19 +35,23 @@ class SearchScreen extends Component {
                     <Logo />
                 </Head>
                 <Content modifiers="content_theme_search">
-                    <Forms modifiers="forms_theme_search">
+                    <Forms modifiers="forms_theme_search"
+                           onSubmit={this.onSubmitSearch.bind(this)}>
                         <TextForm
+                                  inputValue={this.props.searchLogin}
                                   inputType="text"
                                   placeholderText="Enter user login"
-                                  modifiers="text-form_theme_search" />
+                                  modifiers="text-form_theme_search"
+                                  onChange={this.onChange.bind(this)} />
                         <FormButton modifiers="form-button_theme_search"
                                     buttonText="search" />
                     </Forms>
-                    <ul className="user-list">
+                    <UserList foundProfiles={this.props.foundProfiles} />
+                    {/* <ul className="user-list">
                             <ol className="user-list__user"><a className="user__link" href="/profile?nickname=Ivan">Ivan</a></ol>
                             <ol className="user-list__user"><a className="user__link" href="/profile?nickname=Ivan">Ivan</a></ol>
                             <ol className="user-list__user"><a className="user__link" href="/profile?nickname=Ivan">Ivan</a></ol>
-                    </ul>
+                    </ul> */}
                 </Content>
                 <Navbar activeLink="search" />
             </Container>

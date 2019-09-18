@@ -11,6 +11,10 @@ export default function reduce(state = initialState, action = {}) {
         case types.ENTER_LOGIN:
             return state.merge({
                 searchLogin: action.char
+            });
+        case types.SEARCH_USER:
+            return state.merge({
+                foundProfiles: action.foundProfiles
             })
         default:
             return state;
