@@ -1,0 +1,22 @@
+.content_theme_addpost {
+    display: flex;
+    justify-content: center;
+    
+    background-color: #2B303A;
+
+    height: 100%;
+}
+
+.form-button_theme_addpost {
+    outline: none;
+    margin: 0 50px 0 0;
+}
+
+.head_theme_addpost {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 3;
+
+    /* width: 95%; */
+}
