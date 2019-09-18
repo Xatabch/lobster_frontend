@@ -36,4 +36,4 @@ class API {
     }
 }
 
-export default new API(HOST || 'http://localhost:8000');
+export default new API({host: HOST || 'http://localhost:8000'});

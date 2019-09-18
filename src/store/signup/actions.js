@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import API from '../../services/api';
+import API from '../../services/API'
 import { redirect } from '../../services/helpers';
 
 export function enterLogin(char) {

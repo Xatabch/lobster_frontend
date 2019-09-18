@@ -6,7 +6,7 @@
   "scripts": {
     "serv": "node server",
     "dev": "webpack --env development --mode development --watch",
-    "now-build": "webpack --mode production"
+    "now-build": "webpack --env production --mode production"
   },
   "repository": {
     "type": "git",
