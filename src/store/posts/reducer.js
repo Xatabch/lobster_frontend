@@ -4,7 +4,8 @@ import * as types from './actionTypes';
 const initialState = Immutable({
     posts:[],
     errorText: '',
-    currentPage: 1
+    currentPage: 1,
+    postsOffset: 10
 });
 
 export default function reduce(state = initialState, action = {}) {

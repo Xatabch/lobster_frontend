@@ -7,7 +7,7 @@ function OpenPost(props) {
     <div className="open-post">
       <div className="post__photos">
             <div className="post__close" onClick={(e) => props.onClose(e)}></div>
-            <img className="photos__photo" src={props.photoSrc} alt="" />
+            <img className="photos__photo" src={`${HOST}/media/${props.photoSrc}`} alt="" />
             <h1 className="photos__header">{props.headerText}</h1>
           </div>
           <div className="post__items">
@@ -47,7 +47,7 @@ export default class Post extends React.Component {
                                             date={this.props.date}
                                             onClose={this.onClose.bind(this)}>{this.props.children}</OpenPost>) : null}
           <div className="post__photos">
-            <img className="photos__photo" src={this.props.photoSrc} alt="" />
+            <img className="photos__photo" src={`${HOST}/media/${this.props.photoSrc}`} alt="" />
             <h1 className="photos__header">{this.props.headerText}</h1>
           </div>
           <div className="post__items">

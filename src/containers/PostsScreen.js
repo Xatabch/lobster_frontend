@@ -36,7 +36,7 @@ class PostsScreen extends Component {
                                         if(post.photos[p]) {
                                             return (
                                                 <figure key={nanoid()} className="text__photo">
-                                                    <img src={post.photos[p]} />
+                                                    <img src={`${HOST}/media/${post.photos[p]}`} />
                                                 </figure>
                                             )
                                         } else {

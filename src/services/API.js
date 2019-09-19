@@ -145,6 +145,53 @@ class API {
             status: response.status
         }
     }
+
+    async addPost({
+        form = {}
+    } = {}) {
+        let csrftoken = Cookies.get('csrftoken');
+        const response = await fetch(`${this.host}/api/posts/`, {
+            method: 'POST',
+            mode: 'cors',
+            credentials: 'include',
+            headers: {
+                'X-CSRFToken': csrftoken
+            },
+            body: form
+        });
+
+        console.log(await response.json());
+
+        return {
+            status: response.status
+        }
+    }
+
+    async getPosts({
+        page = 1, 
+        offset = 10,
+        username = ''
+    } = {}) {
+        let response;
+        if (!username) {
+            response = await fetch(`${this.host}/api/posts/${page}/${offset}/`, {
+                mode: 'cors',
+                credentials: 'include'
+            });
+        } else {
+            response = await fetch(`${this.host}/api/posts/${page}/${offset}/${username}/`, {
+                mode: 'cors',
+                credentials: 'include'
+            });
+        }
+
+        let data = await response.json()
+
+        return {
+            status: response.status,
+            posts: Array.from(data)
+        }
+    }
 }
 
 export default new API({host: HOST || 'http://localhost:8000'});

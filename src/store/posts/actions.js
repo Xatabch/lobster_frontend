@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-// import API from '../../services/api';
+import API from '../../services/API';
 import { redirect, getAllUrlParams } from '../../services/helpers';
 
 export function getPosts(direction) {
@@ -8,6 +8,7 @@ export function getPosts(direction) {
         // 1. Проанализировать URL, если там нет параметра page, то нужно его добавить, по умолчанию page=1
         // Обработать page и direction
         const currentPage = getState().posts.currentPage;
+        const postsOffset = getState().posts.postsOffset;
         let nextPage = 1;
 
         if (!direction) {
@@ -25,7 +26,19 @@ export function getPosts(direction) {
                              currentPage - 1 : 
                              0; 
         }
+        
+        const data = await API.getPosts({page: nextPage, offset: postsOffset});
 
+        const processData = data.posts.map(post => {
+            return {
+                id: post.id,
+                author: post.author,
+                text: Object.values(JSON.parse(post.text)),
+                photos: post.photos
+            }
+        });
+
+        console.log(processData);
         // 2. Сделать GET запрос на сервер, согласно параметрам страницы
         // 3. Преобразовать данные, если это необходимо нужный вид
         const mockData = {
@@ -57,8 +70,8 @@ export function getPosts(direction) {
         }
 
         // 4. Если все прошло успешно, то dispatch(types.GET_POSTS, posts, currentPage(согласно параметрам URL))
-        if(mockData.status === 200) {
-            dispatch({type: types.GET_POSTS, posts: mockData.posts, currentPage: nextPage});
+        if(data.status === 200) {
+            dispatch({type: types.GET_POSTS, posts: processData, currentPage: nextPage});
         } else {
             // 5. Если запрос прошел неудачно, dispatch(types.GET_POSTS_ERROR, errorText), и вывести в соотв. месте на странице
         }
