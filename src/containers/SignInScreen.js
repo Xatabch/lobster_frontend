@@ -30,6 +30,11 @@ class SignInScreen extends Component {
         this.props.dispatch(signinActions.checkLogin());
     }
 
+    onSubmit(e) {
+        e.preventDefault();
+        this.props.dispatch(signinActions.signin());
+    }
+
     render() {
         return ( 
             <Container modifiers="container_theme_signin">
@@ -55,7 +60,8 @@ class SignInScreen extends Component {
                                 <span className="or">or</span>
                                 <Link className="link" to="/signup">Sign up</Link>
                             </Links>
-                            <Forms modifiers="forms_theme_signin">
+                            <Forms onSubmit={this.onSubmit.bind(this)}
+                                   modifiers="forms_theme_signin">
                                 <TextForm labelText="email or login"
                                           inputType="text"
                                           placeholderText="Enter your email"

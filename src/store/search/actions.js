@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-// import API from '../../services/api';
+import API from '../../services/API';
 import { redirect } from '../../services/helpers';
 
 export function enterLogin(char) {
@@ -12,18 +12,22 @@ export function searchUser() {
         const searchLogin = getState().search.searchLogin;
         // 2. Отправить запрос с заданным логином
 
-        const mockData = {
-            status: 200,
+        const data = await API.profile({
+            username: searchLogin
+        })
+
+        const proceedData = {
+            status: data.status,
             foundProfiles: [
                 {
-                    login: 'Ivan'
+                    login: data.login
                 }
             ]
         }
 
-        if(mockData.status === 200) {
+        if(proceedData.status === 200) {
             // 3. dispatch(types.SEARCH_USER, user)
-            dispatch({type: types.SEARCH_USER, foundProfiles: mockData.foundProfiles});
+            dispatch({type: types.SEARCH_USER, foundProfiles: proceedData.foundProfiles});
         } else {
             // 4. dispatch(ошибка)
         }

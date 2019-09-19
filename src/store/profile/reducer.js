@@ -6,6 +6,8 @@ const initialState = Immutable({
     profileFollowers: 0,
     profileFollowing: 0,
     profilePosts: 0,
+    isMyPage: false,
+    isFollow: false,
 });
 
 export default function reduce(state = initialState, action = {}) {
@@ -15,8 +17,14 @@ export default function reduce(state = initialState, action = {}) {
                 login: action.login,
                 profileFollowers: action.profileFollowers,
                 profileFollowing: action.profileFollowing,
-                profilePosts: action.profilePosts
-            })
+                profilePosts: action.profilePosts,
+                isMyPage: action.isMyPage,
+                isFollow: action.isFollow,
+            });
+        case types.FOLLOW:
+            return state.merge({
+                isFollow: action.isFollow
+            });
         default:
             return state;
 
@@ -30,3 +38,7 @@ export const getFollowers = state => state.profile.profileFollowers;
 export const getFollowing = state => state.profile.profileFollowing;
 
 export const getPosts = state => state.profile.profilePosts;
+
+export const isMyPage = state => state.profile.isMyPage;
+
+export const isFollow = state => state.profile.isFollow;

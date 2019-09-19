@@ -33,14 +33,48 @@ class API {
         };
     }
 
+    async signin({
+        login = '',
+        password = ''
+    } = {}) {
+        let csrftoken = Cookies.get('csrftoken');
+        const response = await fetch(`${this.host}/api/signin/`, {
+            method: 'POST',
+            mode: 'cors',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify({
+                'username': login,
+                'password': password
+            })
+        });
+
+        return {
+            status: response.status
+        };
+    }
+
     async profile({
         username = ''
     } = {}) {
-        const response = await fetch(`${this.host}/api/profile/?username=${username}`, {
-            method: 'GET',
-            mode: 'cors',
-            credentials: 'include'
-        });
+        let response;
+
+        if (!username) {
+            response = await fetch(`${this.host}/api/profile/`, {
+                method: 'GET',
+                mode: 'cors',
+                credentials: 'include'
+            });
+        } else {
+            response = await fetch(`${this.host}/api/profile/${username}/`, {
+                method: 'GET',
+                mode: 'cors',
+                credentials: 'include'
+            });
+        }
 
         const data = await response.json();
 
@@ -48,6 +82,68 @@ class API {
             status: response.status,
             ...data
         };
+    }
+
+    async follow({
+        username = ''
+    } = {}) {
+        let csrftoken = Cookies.get('csrftoken');
+        const response = await fetch(`${this.host}/api/follow/`, {
+            method: 'POST',
+            mode: 'cors',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify({
+                'username': username,
+            })
+        });
+
+        return {
+            status: response.status
+        }
+    }
+
+    async unfollow({
+        username = ''
+    } = {}) {
+        let csrftoken = Cookies.get('csrftoken');
+        const response = await fetch(`${this.host}/api/follow/`, {
+            method: 'DELETE',
+            mode: 'cors',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify({
+                'username': username,
+            })
+        });
+
+        return {
+            status: response.status
+        }
+    }
+
+    async logout() {
+        let csrftoken = Cookies.get('csrftoken');
+        const response = await fetch(`${this.host}/api/logout/`, {
+            method: 'POST',
+            mode: 'cors',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify({})
+        });
+
+        return {
+            status: response.status
+        }
     }
 }
 

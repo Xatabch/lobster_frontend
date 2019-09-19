@@ -1,5 +1,5 @@
 import React from 'react';
-import classnames from 'classnames';
+import { Link } from 'react-router';
 import './UserList.css';
 import nanoid from 'nanoid';
 
@@ -9,7 +9,7 @@ export default function UserList(props) {
             {props.foundProfiles.map(item => {
                 return (
                     <ol key={nanoid()} className="user-list__user">
-                        <a className="user__link" href={`/profile?nickname=${item.login}`}>{item.login}</a>
+                        <Link className="user__link" to={`/profile?username=${item.login}`}>{item.login}</Link>
                     </ol>
                 )
             })}

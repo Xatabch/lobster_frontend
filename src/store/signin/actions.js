@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-// import API from '../../services/api';
+import API from '../../services/API';
 import { redirect } from '../../services/helpers';
 
 export function enterLogin(char) {
@@ -37,15 +37,16 @@ export function signin() {
         const login = getState().signin.login;
         const password = getState().signin.password;
 
+        const data = await API.signin({login, password});
         // 2. Сделать запрос с этими данными
         // mock
-        let mockData = {
-            status: 200
-        }
+        // let mockData = {
+        //     status: 200
+        // }
 
         // 3. Если статус 200, то произвести редирект на страницу пользователя
         // иначе издать событие ошибки с ее текстом
-        if (mockData.status === 200) {
+        if (data.status === 200) {
             redirect('/profile');
         } else {
             // событие с текстом ошибки

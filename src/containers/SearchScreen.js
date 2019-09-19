@@ -47,11 +47,6 @@ class SearchScreen extends Component {
                                     buttonText="search" />
                     </Forms>
                     <UserList foundProfiles={this.props.foundProfiles} />
-                    {/* <ul className="user-list">
-                            <ol className="user-list__user"><a className="user__link" href="/profile?nickname=Ivan">Ivan</a></ol>
-                            <ol className="user-list__user"><a className="user__link" href="/profile?nickname=Ivan">Ivan</a></ol>
-                            <ol className="user-list__user"><a className="user__link" href="/profile?nickname=Ivan">Ivan</a></ol>
-                    </ul> */}
                 </Content>
                 <Navbar activeLink="search" />
             </Container>
