@@ -2,10 +2,43 @@
     "version": 2,
     "name": "Lobster",
     "builds": [
+        { "src": "./server/index.js", "use": "@now/node-server" },
         {
             "src": "package.json",
             "use": "@now/static-build",
             "config": { "distDir": "build" }
         }
-    ]
+    ],
+    "routes": [
+        {
+          "src": "/signup",
+          "dest": "/server/index.js",
+          "methods": ["GET"]
+        },
+        {
+            "src": "/signin",
+            "dest": "/server/index.js",
+            "methods": ["GET"]
+        },
+        {
+            "src": "/posts",
+            "dest": "/server/index.js",
+            "methods": ["GET"]
+        },
+        {
+            "src": "/profile",
+            "dest": "/server/index.js",
+            "methods": ["GET"]
+        },
+        {
+            "src": "/addpost",
+            "dest": "/server/index.js",
+            "methods": ["GET"]
+        },
+        {
+            "src": "/search",
+            "dest": "/server/index.js",
+            "methods": ["GET"]
+        }
+      ]
 }

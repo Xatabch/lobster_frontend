@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server",
     "serv": "node server",
     "dev": "webpack --env development --mode development --watch",
     "now-build": "webpack --env production --mode production"
