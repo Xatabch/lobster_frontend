@@ -8,7 +8,6 @@ export function enterText(postText) {
 
 export function uploadPhoto(form, hash) {
     return async (dispatch, getState) => {
-        // 1. Добавить фото в массив с фото
         const postPhotos = {...getState().addpost.postPhotos};
         const postText = [...getState().addpost.postText];
         postPhotos[hash] = form.files[0];
@@ -20,7 +19,6 @@ export function uploadPhoto(form, hash) {
 
 export function sendPost() {
     return async (dispatch, getState) => {
-        // 1. Получить введенные данные и преобразовать их в нужный вид
         const postText = [...getState().addpost.postText];
         const postPhotos = {...getState().addpost.postPhotos};
 
