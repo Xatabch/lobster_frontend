@@ -62,9 +62,9 @@ class SignInScreen extends Component {
                             </Links>
                             <Forms onSubmit={this.onSubmit.bind(this)}
                                    modifiers="forms_theme_signin">
-                                <TextForm labelText="email or login"
+                                <TextForm labelText="login"
                                           inputType="text"
-                                          placeholderText="Enter your email"
+                                          placeholderText="Enter your login"
                                           modifiers="text-form_theme_signin"
                                           errorText={this.props.loginError}
                                           inputValue={this.props.login}

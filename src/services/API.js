@@ -1,5 +1,3 @@
-import Cookies from 'js-cookie';
-
 class API {
     constructor({
         host = 'http://localhost:8000'
@@ -12,14 +10,12 @@ class API {
         email = '',
         password = ''
     } = {}) {
-        let csrftoken = Cookies.get('csrftoken');
         const response = await fetch(`${this.host}/api/signup/`, {
             method: 'POST',
             mode: 'cors',
             credentials: 'include',
             headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrftoken
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 'username': login,
@@ -40,14 +36,12 @@ class API {
         login = '',
         password = ''
     } = {}) {
-        let csrftoken = Cookies.get('csrftoken');
         const response = await fetch(`${this.host}/api/signin/`, {
             method: 'POST',
             mode: 'cors',
             credentials: 'include',
             headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrftoken
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 'username': login,
@@ -105,14 +99,12 @@ class API {
     async follow({
         username = ''
     } = {}) {
-        let csrftoken = Cookies.get('csrftoken');
         const response = await fetch(`${this.host}/api/follow/`, {
             method: 'POST',
             mode: 'cors',
             credentials: 'include',
             headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrftoken
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 'username': username,
@@ -127,14 +119,12 @@ class API {
     async unfollow({
         username = ''
     } = {}) {
-        let csrftoken = Cookies.get('csrftoken');
         const response = await fetch(`${this.host}/api/follow/`, {
             method: 'DELETE',
             mode: 'cors',
             credentials: 'include',
             headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrftoken
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 'username': username,
@@ -147,14 +137,12 @@ class API {
     }
 
     async logout() {
-        let csrftoken = Cookies.get('csrftoken');
         const response = await fetch(`${this.host}/api/logout/`, {
             method: 'POST',
             mode: 'cors',
             credentials: 'include',
             headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrftoken
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({})
         });
@@ -167,18 +155,12 @@ class API {
     async addPost({
         form = {}
     } = {}) {
-        let csrftoken = Cookies.get('csrftoken');
         const response = await fetch(`${this.host}/api/posts/`, {
             method: 'POST',
             mode: 'cors',
             credentials: 'include',
-            headers: {
-                'X-CSRFToken': csrftoken
-            },
             body: form
         });
-
-        console.log(await response.json());
 
         return {
             status: response.status
@@ -214,14 +196,12 @@ class API {
     async deletePost({
         id = 0
     } = {}) {
-        let csrftoken = Cookies.get('csrftoken');
         const response = await fetch(`${this.host}/api/posts/`, {
             method: 'DELETE',
             mode: 'cors',
             credentials: 'include',
             headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': csrftoken
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 'id': id,
