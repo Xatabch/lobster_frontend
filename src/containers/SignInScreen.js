@@ -43,10 +43,10 @@ class SignInScreen extends Component {
                 </Head>
                 <Content modifiers="content_theme_signin">
                     <Bar modifiers="bar_theme_left">
-                        <Post photoSrc="https://dribbble.s3.amazonaws.com/users/1619633/screenshots/7105405/downloads/Buffalo%201.png"
+                        <Post
                             headerText="Click on me"
                             author="Ivan"
-                            date="31.08.2019"
+                            date={new Date()}
                             authorModifiers="item_theme_author"
                             dateModifiers="item_theme_create-date"
                             isOpen={false} >

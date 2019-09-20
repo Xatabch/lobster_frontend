@@ -2,7 +2,7 @@
     width: 100%;
     height: 70%;
     overflow: scroll;
-    padding: 6% 20% 0 20%;
+    padding: 8% 20% 0 20%;
     z-index: 2;
 }
 
@@ -34,6 +34,33 @@
 .addpost__image {
     display: flex;
     justify-content: center;
-    padding: 20px 0 20px 0;
+}
+
+.addpost__image img {
+    width: 100%;
+    object-fit: scale-down;
+}
+
+
+/* 
+    ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px
+*/
+  
+@media (min-width: 768px) and (max-width: 1024px) {
+    .addpost {
+        padding: 15% 20% 0 20%;
+    }
+}
+  
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 320px) and (max-width: 480px) {   
+    .addpost {
+        padding: 20% 20% 0 20%;
+    } 
 }
 

@@ -31,7 +31,7 @@ class ProfileScreen extends Component {
         return ( 
             <Container>
                 <Head modifiers="head_theme_profile">
-                    <Logo />
+                    <Logo modifiers="logo_theme_profile"/>
                     <Logout onClick={this.onLogoutClick.bind(this)}/>
                 </Head>
                 <Content modifiers="content_theme_profile">

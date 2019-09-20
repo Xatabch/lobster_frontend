@@ -9,12 +9,12 @@ function OpenPost(props) {
     <div className="open-post">
       <div className="post__photos">
             <div className="post__close" onClick={(e) => props.onClose(e)}></div>
-            <img className="photos__photo" src={`${HOST}/media/${props.photoSrc}`} alt="" />
+            <img className="photos__photo" src={props.photoSrc ? `${HOST}/media/${props.photoSrc}` : ''} alt="" />
             <h1 className="photos__header">{props.headerText}</h1>
           </div>
           <div className="post__items">
             <span className="items__item item_theme_author">{props.author}</span>
-            <span className="items__item">{props.date}</span>
+            <span className="items__item">{`${props.date.getDate()}.${props.date.getMonth()}.${props.date.getFullYear()}`}</span>
             {props.isMyPost ? <Button modifiers="button_theme_post" onClick={props.onDelete} buttonText="Delete" /> : null}
           </div>
           <div className="post__text">{props.children}</div>
@@ -57,12 +57,12 @@ export default class Post extends React.Component {
                                             onDelete={this.props.onDelete}
                                             onClose={this.onClose.bind(this)}>{this.props.children}</OpenPost>) : null}
           <div className="post__photos">
-            <img className="photos__photo" src={`${HOST}/media/${this.props.photoSrc}`} alt="" />
+            <img className="photos__photo" src={this.props.photoSrc ? `${HOST}/media/${this.props.photoSrc}` : ''} alt="" />
             <h1 className="photos__header">{this.props.headerText}</h1>
           </div>
           <div className="post__items">
             <span className="items__item item_theme_author">{this.props.author}</span>
-            <span className="items__item">{this.props.date}</span>
+            <span className="items__item">{`${this.props.date.getDate()}.${this.props.date.getMonth()}.${this.props.date.getFullYear()}`}</span>
             {this.props.isMyPost ? <Button modifiers="button_theme_post" onClick={this.onDelete.bind(this)} buttonText="Delete" /> : null}
           </div>
         </div>

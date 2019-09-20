@@ -5,7 +5,7 @@ const initialState = Immutable({
     posts:[],
     errorText: '',
     currentPage: 1,
-    postsOffset: 10
+    postsOffset: 5
 });
 
 export default function reduce(state = initialState, action = {}) {

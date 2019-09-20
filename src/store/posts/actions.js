@@ -21,11 +21,12 @@ export function getPosts(direction) {
             // изменение страницы в зависимости от направления
             nextPage = direction === 'right' ? 
                              currentPage + 1 : 
-                             currentPage > 0 ? 
+                             currentPage > 1 ? 
                              currentPage - 1 : 
-                             0; 
+                             1; 
         }
         
+
         let data;
         if (URLparams.username) {
             data = await API.getPosts({page: nextPage, offset: postsOffset, username: URLparams.username});
@@ -33,17 +34,22 @@ export function getPosts(direction) {
             data = await API.getPosts({page: nextPage, offset: postsOffset});
         }
 
+        if (data.posts.length === 0 && nextPage != 1) {
+            redirect(`/posts?page=1${URLparams.username ? `&username=${URLparams.username}` : ''}`);
+            return;
+        }
+
         const processData = data.posts.map(post => {
             return {
                 id: post.id,
                 author: post.author,
                 text: Object.values(JSON.parse(post.text)),
+                publishDate: new Date(post.create_date),
                 photos: post.photos,
                 isMyPost: post.isMyPost || false
             }
         });
 
-        console.log(processData);
         // 2. Сделать GET запрос на сервер, согласно параметрам страницы
         // 3. Преобразовать данные, если это необходимо нужный вид
 

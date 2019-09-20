@@ -15,11 +15,11 @@ class Paginate extends Component {
         return (
             <div className="paginate">
                 <div className="pagiante__left" onClick={() => { this.onLeftClick() }}>
-                    left
+                    Left
                 </div>
                 <div className="paginate__page">{this.props.page}</div>
                 <div className="pagiante__right" onClick={() => { this.onRightClick() }}>
-                    right
+                    Right
                 </div>
             </div>
         )

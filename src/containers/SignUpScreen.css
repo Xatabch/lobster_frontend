@@ -22,8 +22,8 @@
 
 .forms_theme_singup {
     width: 45%;
-    margin: 0 auto 0 auto;
- }
+    margin: 18px auto 0 auto;
+}
  
 
 .or {
@@ -50,8 +50,33 @@
     ##Screen = B/w 320px to 479px
   */
   
-  @media (min-width: 320px) and (max-width: 480px) {    
+@media (min-width: 320px) and (max-width: 480px) { 
+    .profile {
+      height: 60%;
+      width: 100%;
+    }
+
+    .profile__post-info {
+      height: 15%;
+    }
+    
+    .profile_login {
+      height: 25%;
+    }  
+
     .forms_theme_singup {
       width: 80%;
     }
-  }
+
+    .links_theme_singup {
+      width: 80%;
+    }
+
+    .form-button_theme_signup {
+      margin-top: 18px;
+    }
+
+    .text-form_theme_signup {
+      padding: 13px 0 0 0;
+    }
+}

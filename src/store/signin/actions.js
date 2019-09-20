@@ -41,7 +41,7 @@ export function signin() {
             dispatch({
                 type: types.ERROR,
                 loginError: data.username,
-                passwordError: data.passwordError
+                passwordError: data.password
             });
         }
     }

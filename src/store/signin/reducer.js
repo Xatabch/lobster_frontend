@@ -23,13 +23,15 @@ export default function reduce(state = initialState, action = {}) {
         case types.ERROR:
             return state.merge({
                 loginError: action.loginError || '',
-                password: action.passwordError || '',
+                passwordError: action.passwordError || '',
             });
 
         case types.RESET_DATA:
             return state.merge({
                 login: '',
-                password: ''
+                password: '',
+                loginError: '',
+                passwordError: '',
             })
 
         default:
