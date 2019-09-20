@@ -57,6 +57,7 @@
 
 .text-form__error-text {
   color: #A50104;
+  font-size: 13px;
   font-family: Roboto;
   font-weight: 500;
   position: absolute;

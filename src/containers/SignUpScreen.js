@@ -18,6 +18,10 @@ import FormButton from '../components/FormButton/FormButton';
 import { Link } from 'react-router';
 
 class SignUpScreen extends Component {
+    componentDidMount() {
+        this.props.dispatch(signupActions.checkAuth());
+    }
+
     onChangeLogin(char) {
         this.props.dispatch(signupActions.enterLogin(char));
     }
@@ -34,20 +38,13 @@ class SignUpScreen extends Component {
         this.props.dispatch(signupActions.enterPasswordRepeat(char));
     }
 
-    onLoginBlur() {
-        this.props.dispatch(signupActions.checkLogin());
-    }
-
-    onEmailBlur() {
-        this.props.dispatch(signupActions.checkEmail());
-    }
-
-    onPasswordBlur() {
-        this.props.dispatch(signupActions.checkPassword());
-    }
-
     onPasswordRepeatBlur() {
         this.props.dispatch(signupActions.checkPasswordRepeat());
+    }
+
+    onSubmit(e) {
+        e.preventDefault();
+        this.props.dispatch(signupActions.signup());
     }
 
     render() {
@@ -58,14 +55,13 @@ class SignUpScreen extends Component {
                 </Head>
                 <Content modifiers="content_theme_singup">
                     <Bar modifiers="bar_theme_left">
-                        <Post photoSrc="https://dribbble.s3.amazonaws.com/users/1619633/screenshots/7105405/downloads/Buffalo%201.png"
+                        <Post
                             headerText="Click on me"
                             author="Ivan"
-                            date="31.08.2019"
+                            date={new Date()}
                             authorModifiers="item_theme_author"
                             dateModifiers="item_theme_create-date"
                             isOpen={false} >
-                        <h1 className="text__header">Hello world message</h1>
                         <p className="text__paragraph">Hello, and welcome to our social network Lobster</p>
                         </Post>
                     </Bar>
@@ -76,23 +72,22 @@ class SignUpScreen extends Component {
                                 <span className="or">or</span>
                                 <Link className="link link_theme_active" to="/signup">Sign up</Link>
                             </Links>
-                            <Forms modifiers="forms_theme_singup">
+                            <Forms onSubmit={this.onSubmit.bind(this)}
+                                   modifiers="forms_theme_singup">
                                 <TextForm labelText="email"
                                           inputType="text"
                                           placeholderText="Enter your email"
                                           modifiers="text-form_theme_signup"
                                           errorText={this.props.emailError}
                                           inputValue={this.props.email}
-                                          onChange={this.onChangeEmail.bind(this)}
-                                          onBlur={this.onEmailBlur.bind(this)} />
+                                          onChange={this.onChangeEmail.bind(this)} />
                                 <TextForm labelText="login"
                                           inputType="text"
                                           placeholderText="Only latin characters"
                                           modifiers="text-form_theme_signup"
                                           errorText={this.props.loginError}
                                           inputValue={this.props.login}
-                                          onChange={this.onChangeLogin.bind(this)}
-                                          onBlur={this.onLoginBlur.bind(this)} />
+                                          onChange={this.onChangeLogin.bind(this)} />
                                 <TextForm labelText="password"
                                           inputType="password"
                                           placeholderText="From 8 symbols"
@@ -101,7 +96,7 @@ class SignUpScreen extends Component {
                                           inputValue={this.props.password}
                                           onChange={this.onChangePassword.bind(this)} />
                                 <TextForm labelText="repeat password"
-                                          inputType="text"
+                                          inputType="password"
                                           placeholderText="Repeat password"
                                           modifiers="text-form_theme_signup"
                                           errorText={this.props.passwordRepeatError}

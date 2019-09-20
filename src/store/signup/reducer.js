@@ -34,24 +34,25 @@ export default function reduce(state = initialState, action = {}) {
                 passwordRepeat: action.char
             });
 
-        case types.LOGIN_ERROR:
+        case types.ERROR:
             return state.merge({
-                loginError: action.errorText
-            });
-
-        case types.EMAIL_ERROR:
-            return state.merge({
-                emailError: action.errorText
-            });
-        
-        case types.PASSWORD_ERROR:
-            return state.merge({
-                passwordError: action.errorText
-            });
+                loginError: action.loginError || '',
+                emailError: action.emailError || '',
+                passwordError: action.passwordError || '',
+                passwordRepeatError: action.passwordRepeatError || ''
+            }) 
 
         case types.PASSWORDREPEAT_ERROR:
             return state.merge({
                 passwordRepeatError: action.errorText
+            })
+
+        case types.RESET_DATA:
+            return state.merge({
+                login: '',
+                email: '',
+                password: '',
+                passwordRepeat: ''
             })
 
         default:
@@ -74,4 +75,4 @@ export const getEmailError = state => state.signup.emailError;
 
 export const getPasswordError = state => state.signup.passwordError;
 
-export const getPasswordRepeatError = state => state.signup.getPasswordRepeatError;
+export const getPasswordRepeatError = state => state.signup.passwordRepeatError;

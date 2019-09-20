@@ -14,7 +14,8 @@ export default function reduce(state = initialState, action = {}) {
             });
         case types.UPLOAD_PHOTO:
             return state.merge({
-                postPhotos: action.postPhotos
+                postPhotos: action.postPhotos,
+                postText: action.postText
             })
         default:
             return state;

@@ -22,8 +22,8 @@
 
 .forms_theme_singup {
     width: 45%;
-    margin: 0 auto 0 auto;
- }
+    margin: 18px auto 0 auto;
+}
  
 
 .or {
@@ -34,24 +34,49 @@
     color: rgba(255, 255, 255, 0.3);
 }
 
-  /* 
-    ##Device = Low Resolution Tablets, Mobiles (Landscape)
-    ##Screen = B/w 481px to 767px
-  */
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
   
-  @media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 481px) and (max-width: 767px) {
+  .forms_theme_singup {
+    width: 80%;
+  }
+}
+  
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+  
+@media (min-width: 320px) and (max-width: 480px) { 
+    .profile {
+      height: 60%;
+      width: 100%;
+    }
+
+    .profile__post-info {
+      height: 15%;
+    }
+    
+    .profile_login {
+      height: 25%;
+    }  
+
     .forms_theme_singup {
       width: 80%;
     }
-  }
-  
-  /* 
-    ##Device = Most of the Smartphones Mobiles (Portrait)
-    ##Screen = B/w 320px to 479px
-  */
-  
-  @media (min-width: 320px) and (max-width: 480px) {    
-    .forms_theme_singup {
+
+    .links_theme_singup {
       width: 80%;
     }
-  }
+
+    .form-button_theme_signup {
+      margin-top: 18px;
+    }
+
+    .text-form_theme_signup {
+      padding: 13px 0 0 0;
+    }
+}

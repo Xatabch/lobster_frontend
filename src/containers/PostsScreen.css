@@ -1,7 +1,11 @@
+.head_theme_posts {
+  background-color: #2B303A;
+}
+
 .content_theme_posts {
-    background-color: #2B303A;
-    height: 89%;
-    overflow: scroll;
+  background-color: #2B303A;
+  height: 89%;
+  overflow: scroll;
 }
 
 .post_theme_posts {

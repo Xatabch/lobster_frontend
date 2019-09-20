@@ -31,7 +31,7 @@ class AddPostScreen extends Component {
         return ( 
             <Container>
                 <Head modifiers="head_theme_addpost">
-                    <Logo />
+                    <Logo modifiers="logo_theme_addpost" />
                     <FormButton modifiers="form-button_theme_addpost" 
                                 buttonText="Publish"
                                 onClick={this.onSendPost.bind(this)} />

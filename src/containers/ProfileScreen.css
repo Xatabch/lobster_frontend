@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 
     background-color: #2B303A;
 
@@ -13,4 +14,41 @@
     color: white;
 }
 
+.head_theme_profile {
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+}
 
+/* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+*/
+  
+@media (min-width: 481px) and (max-width: 767px) {
+    .head_theme_profile {
+        justify-content: flex-end;
+    }
+
+    .logo_theme_profile {
+        display: none;
+    }
+}
+  
+/* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+*/
+  
+@media (min-width: 320px) and (max-width: 480px) {
+    .head_theme_profile {
+        justify-content: flex-end;
+    }
+
+    .logo_theme_profile {
+        display: none;
+    }
+    .button_theme_profile {
+        margin: 0 0 0 0; 
+    }
+}

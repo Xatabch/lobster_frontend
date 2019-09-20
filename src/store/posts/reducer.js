@@ -4,7 +4,8 @@ import * as types from './actionTypes';
 const initialState = Immutable({
     posts:[],
     errorText: '',
-    currentPage: 1
+    currentPage: 1,
+    postsOffset: 5
 });
 
 export default function reduce(state = initialState, action = {}) {
@@ -14,10 +15,17 @@ export default function reduce(state = initialState, action = {}) {
                 posts: action.posts,
                 currentPage: action.currentPage
             });
+
         case types.GET_POSTS_ERROR:
             return state.merge({
               errorText: action.errorText
             });
+
+        case types.DELETE_POST:
+            return state.merge({
+                posts: action.posts
+            });
+            
         default:
             return state;
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import classnames from 'classnames';
-import './Subtitle.css';
 
 export default function Subtitle(props) {
     return (

@@ -1,7 +1,9 @@
 const path = require("path");
+const webpack = require('webpack');
+const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-module.exports = {
+const common = {
   entry: "./src/index.js",
   output: {
     path: path.join(__dirname, "/build"),
@@ -37,3 +39,34 @@ module.exports = {
     })
   ]
 };
+
+const devMode = {
+  plugins: [
+    new webpack.DefinePlugin({
+      HOST: JSON.stringify('http://localhost:8000'),
+    }),
+  ]
+};
+
+const prodMode = {
+  plugins: [
+    new webpack.DefinePlugin({
+      HOST: JSON.stringify('https://neiron.pythonanywhere.com'),
+    }),
+  ]
+};
+
+module.exports = env => {
+  if (env === 'development') {
+    return merge([
+      common,
+      devMode
+    ])
+  }
+  if (env === 'production') {
+    return merge([
+      common,
+      prodMode
+    ])
+  }
+}

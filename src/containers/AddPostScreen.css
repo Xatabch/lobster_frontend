@@ -8,7 +8,6 @@
 }
 
 .form-button_theme_addpost {
-    outline: none;
     margin: 0 50px 0 0;
 }
 
@@ -17,6 +16,46 @@
     justify-content: space-between;
     align-items: center;
     z-index: 3;
-
-    /* width: 95%; */
+    background-color: #2B303A;
 }
+
+
+/* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+*/
+  
+  @media (min-width: 481px) and (max-width: 767px) {
+    .form-button_theme_addpost {
+        margin: 0 0 0 0;
+    }
+
+    .logo_theme_addpost {
+        display: none;
+    }
+
+    .head_theme_addpost {
+        margin: 15px 0 0 0;
+        justify-content: center;
+    }
+  }
+  
+  /* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+  */
+  
+  @media (min-width: 320px) and (max-width: 480px) {    
+    .form-button_theme_addpost {
+        margin: 0 0 0 0;
+    }
+
+    .logo_theme_addpost {
+        display: none;
+    }
+
+    .head_theme_addpost {
+        margin: 15px 0 0 0;
+        justify-content: center;
+    }
+  }

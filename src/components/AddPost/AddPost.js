@@ -148,7 +148,6 @@ export default class AddPost extends Component {
     }
 
     render() {
-        // console.log(this.state.postText, this.state.postPhotos);
         return (
             <div className={classnames('addpost', this.props.modifiers)}>
                 {this.state.postText.map((text, i) => {
@@ -165,11 +164,12 @@ export default class AddPost extends Component {
                                       onInput={(e) => {this.onInput(e)}}
                                       onKeyDown={(e) => {this.onKeyDown(e)}}
                                       data-num={i}>{!this.state.formActive ? 'Input text here...' : ''}</span>
+                                { !this.state.enterText ? 
                                 <AttachButton attachOpen={this.state.attachOpen}
                                               onOpenButtonClick={this.onOpenButtonClick.bind(this)}>
                                     <UploadPhoto attachOpen={this.state.attachOpen}
                                                  onUploadPhoto={this.onUploadPhoto.bind(this)} />
-                                </AttachButton>
+                                </AttachButton> : null}
                             </div>
                         )
                     } else if (this.state.postPhotos[text]){

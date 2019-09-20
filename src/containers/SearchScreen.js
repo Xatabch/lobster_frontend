@@ -16,9 +16,6 @@ import Navbar from '../components/Navbar/Navbar';
 import UserList from '../components/UserList/UserList';
 
 class SearchScreen extends Component {
-    componentDidMount() {
-    }
-
     onChange(char) {
         this.props.dispatch(searchActions.enterLogin(char));
     }
@@ -31,7 +28,7 @@ class SearchScreen extends Component {
     render() {
         return ( 
             <Container>
-                <Head>
+                <Head modifiers="head_theme_search">
                     <Logo />
                 </Head>
                 <Content modifiers="content_theme_search">
@@ -47,11 +44,6 @@ class SearchScreen extends Component {
                                     buttonText="search" />
                     </Forms>
                     <UserList foundProfiles={this.props.foundProfiles} />
-                    {/* <ul className="user-list">
-                            <ol className="user-list__user"><a className="user__link" href="/profile?nickname=Ivan">Ivan</a></ol>
-                            <ol className="user-list__user"><a className="user__link" href="/profile?nickname=Ivan">Ivan</a></ol>
-                            <ol className="user-list__user"><a className="user__link" href="/profile?nickname=Ivan">Ivan</a></ol>
-                    </ul> */}
                 </Content>
                 <Navbar activeLink="search" />
             </Container>
