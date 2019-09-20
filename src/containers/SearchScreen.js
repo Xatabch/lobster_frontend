@@ -16,9 +16,6 @@ import Navbar from '../components/Navbar/Navbar';
 import UserList from '../components/UserList/UserList';
 
 class SearchScreen extends Component {
-    componentDidMount() {
-    }
-
     onChange(char) {
         this.props.dispatch(searchActions.enterLogin(char));
     }

@@ -34,21 +34,21 @@
     color: rgba(255, 255, 255, 0.3);
 }
 
-  /* 
-    ##Device = Low Resolution Tablets, Mobiles (Landscape)
-    ##Screen = B/w 481px to 767px
-  */
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
   
-  @media (min-width: 481px) and (max-width: 767px) {
-    .forms_theme_singup {
-      width: 80%;
-    }
+@media (min-width: 481px) and (max-width: 767px) {
+  .forms_theme_singup {
+    width: 80%;
   }
+}
   
-  /* 
-    ##Device = Most of the Smartphones Mobiles (Portrait)
-    ##Screen = B/w 320px to 479px
-  */
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
   
 @media (min-width: 320px) and (max-width: 480px) { 
     .profile {

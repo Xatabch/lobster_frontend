@@ -35,11 +35,6 @@ export function sendPost() {
 
         if (data.status === 201) {
             redirect('/profile');
-        } else {
-
         }
-        // 2. Отправить на бэк
-        // 3. Если 200 ok, то redirect на profile
-        // 4. В противном случае, можно вывести попап, о том, что что-то пошло не так
     }
 }

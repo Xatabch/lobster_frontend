@@ -4,9 +4,6 @@ import { redirect, getAllUrlParams } from '../../services/helpers';
 
 export function getPosts(direction) {
     return async (dispatch, getState) => {
-
-        // 1. Проанализировать URL, если там нет параметра page, то нужно его добавить, по умолчанию page=1
-        // Обработать page и direction
         const currentPage = getState().posts.currentPage;
         const postsOffset = getState().posts.postsOffset;
         const currentURL = window.location.href;
@@ -18,7 +15,6 @@ export function getPosts(direction) {
                 redirect('/posts?page=1');
             }
         } else {
-            // изменение страницы в зависимости от направления
             nextPage = direction === 'right' ? 
                              currentPage + 1 : 
                              currentPage > 1 ? 
@@ -26,14 +22,14 @@ export function getPosts(direction) {
                              1; 
         }
         
-
         let data;
         if (URLparams.username) {
             data = await API.getPosts({page: nextPage, offset: postsOffset, username: URLparams.username});
         } else {
             data = await API.getPosts({page: nextPage, offset: postsOffset});
         }
-
+        
+        
         if (data.posts.length === 0 && nextPage != 1) {
             redirect(`/posts?page=1${URLparams.username ? `&username=${URLparams.username}` : ''}`);
             return;
@@ -50,22 +46,15 @@ export function getPosts(direction) {
             }
         });
 
-        // 2. Сделать GET запрос на сервер, согласно параметрам страницы
-        // 3. Преобразовать данные, если это необходимо нужный вид
-
-        // 4. Если все прошло успешно, то dispatch(types.GET_POSTS, posts, currentPage(согласно параметрам URL))
         if(data.status === 200) {
             redirect(`/posts?page=${nextPage}${URLparams.username ? `&username=${URLparams.username}` : ''}`);
             dispatch({type: types.GET_POSTS, posts: processData, currentPage: nextPage});
-        } else {
-            // 5. Если запрос прошел неудачно, dispatch(types.GET_POSTS_ERROR, errorText), и вывести в соотв. месте на странице
         }
     }
 }
 
 export function deletePost(id) {
     return async (dispatch, getState) => {
-        // 1. Сделать DELETE запрос с переданным id
         const posts = [...getState().posts.posts];
         const data = await API.deletePost({id});
 

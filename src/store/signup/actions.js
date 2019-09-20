@@ -6,13 +6,6 @@ export function enterLogin(char) {
     return dispatch => { dispatch({type: types.ENTER_LOGIN, char}) };
 }
 
-export function checkLogin() {
-    return async function(dispatch, getState) {
-        // Сделать запрос за тем, существует ли такой логин, если да, то dispatch LOGIN_ERROR с текстом "Пользователь присутствует в системе"
-        // если нет, то издать dispatch LOGIN_ERROR с пустым текстом
-    }
-}
-
 export function enterEmail(char) {
     return dispatch => { dispatch({type: types.ENTER_EMAIL, char}) };
 }
@@ -26,10 +19,7 @@ export function enterPasswordRepeat(char) {
 }
 
 export function checkPasswordRepeat() {
-    return async function(dispatch, getState) {
-        // Проверить совпадают ли пароли и если нет dispatch PASSWORDREPEAT_ERROR, что пароли не совпадают,
-        // в противном случае dispatch PASSWORDREPEAT_ERROR с пустым текстом
-        
+    return async function(dispatch, getState) {        
         const password = getState().signup.password;
         const passwordRepeat = getState().signup.passwordRepeat;
         
@@ -43,9 +33,6 @@ export function checkPasswordRepeat() {
 
 export function checkAuth() {
     return async function(dispatch) {
-        // сделать запрос за проверкой авторизован ли я, если да, то произвести редирект
-        // иначе ничего не делать
-
         const data = await API.checAuth();
 
         if (data.status === 200) {
@@ -56,28 +43,21 @@ export function checkAuth() {
 
 export function signup() {
     return async function(dispatch, getState) {
-        // 1. Получить данные состояния
         const login = getState().signup.login;
         const email = getState().signup.email;
         const password = getState().signup.password;
-
-        // 1.1 проверить нет ли ошибок с совпадением паролей, логином или email если нет, то отправить запрос
-        // если есть то, не отправлять
         const passwordRepeatError = getState().signup.passwordRepeatError;
 
         if (passwordRepeatError) {
             return;
         }
 
-        // 2. Сделать запрос с этими данными
         const data = await API.signup({
             login: login,
             email: email,
             password: password
         });
 
-        // 3. Если статус 200, то произвести редирект на страницу пользователя
-        // иначе издать событие ошибки с ее текстом
         if (data.status === 201) {
             redirect('/profile');
             dispatch({type: types.RESET_DATA});
@@ -87,8 +67,7 @@ export function signup() {
                 loginError: data.errors.username,
                 emailError: data.errors.email,
                 passwordError: data.errors.password
-            })
-            // событие с текстом ошибки, которая пришла с бэка
+            });
         }
     }
 }

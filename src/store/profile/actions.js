@@ -4,7 +4,6 @@ import { redirect, getAllUrlParams } from '../../services/helpers';
 
 export function getUserProfile() {
     return async dispatch => { 
-        // Сделать запрос на сервер за пользователем, указанным в параметрах url
         const currentURL = window.location.href;
         const URLparams = getAllUrlParams(currentURL);
 
@@ -26,9 +25,6 @@ export function getUserProfile() {
 
         if(proceedData.status === 200) {
             dispatch({type: types.GET_USER_PROFILE, ...proceedData}); 
-        } else {
-            // Если пользователь не найден, то перенаправаить на страничку 404
-            // redirect('/notfound');
         }
     };
 }
@@ -64,8 +60,6 @@ export function logout() {
 
         if (data.status === 200) {
             redirect('/signin');
-        } else {
-            // Показать сообщение с ошибкой???
         }
     }
 }
