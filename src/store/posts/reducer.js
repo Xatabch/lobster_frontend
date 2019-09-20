@@ -15,10 +15,17 @@ export default function reduce(state = initialState, action = {}) {
                 posts: action.posts,
                 currentPage: action.currentPage
             });
+
         case types.GET_POSTS_ERROR:
             return state.merge({
               errorText: action.errorText
             });
+
+        case types.DELETE_POST:
+            return state.merge({
+                posts: action.posts
+            });
+            
         default:
             return state;
 

@@ -23,7 +23,8 @@ export default function reduce(state = initialState, action = {}) {
             });
         case types.FOLLOW:
             return state.merge({
-                isFollow: action.isFollow
+                isFollow: action.isFollow,
+                profileFollowers: action.profileFollowers
             });
         default:
             return state;

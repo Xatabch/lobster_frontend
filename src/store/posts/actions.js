@@ -9,12 +9,11 @@ export function getPosts(direction) {
         // Обработать page и direction
         const currentPage = getState().posts.currentPage;
         const postsOffset = getState().posts.postsOffset;
+        const currentURL = window.location.href;
+        const URLparams = getAllUrlParams(currentURL);
         let nextPage = 1;
 
         if (!direction) {
-            const currentURL = window.location.href;
-            const URLparams = getAllUrlParams(currentURL);
-
             if(!URLparams.page) {
                 redirect('/posts?page=1');
             }
@@ -27,53 +26,47 @@ export function getPosts(direction) {
                              0; 
         }
         
-        const data = await API.getPosts({page: nextPage, offset: postsOffset});
+        let data;
+        if (URLparams.username) {
+            data = await API.getPosts({page: nextPage, offset: postsOffset, username: URLparams.username});
+        } else {
+            data = await API.getPosts({page: nextPage, offset: postsOffset});
+        }
 
         const processData = data.posts.map(post => {
             return {
                 id: post.id,
                 author: post.author,
                 text: Object.values(JSON.parse(post.text)),
-                photos: post.photos
+                photos: post.photos,
+                isMyPost: post.isMyPost || false
             }
         });
 
         console.log(processData);
         // 2. Сделать GET запрос на сервер, согласно параметрам страницы
         // 3. Преобразовать данные, если это необходимо нужный вид
-        const mockData = {
-            status: 200,
-            posts: [
-                {
-                    id: 1,
-                    author: 'Ivan',
-                    publishDate: '16.09.2019',
-                    title: 'Hello, world',
-                    likes: 10,
-                    isLike: false,
-                    text: ['This is story about how I make light analog of my lovely SN Medium', 'Hsjru83J_', 'Before that was photo'],
-                    // photos: {}
-                    photos: {'Hsjru83J_': 'https://elena-iv-skaya.cdn.prismic.io/elena-iv-skaya/53b06fa549e3215ffc475c750fb03f60915c4dee_la-dolce-vita-cover.jpg'}
-                },
-                {
-                    id: 2,
-                    author: 'Michal',
-                    publishDate: '16.09.2019',
-                    title: 'Hello, world 2.0',
-                    likes: 10,
-                    isLike: false,
-                    text: ['This is story about how I make light analog of my lovely SN Medium', 'Hsjru83J_', 'Before that was photo'],
-                    // photos: {}
-                    photos: {'Hsjru83J_': 'https://elena-iv-skaya.cdn.prismic.io/elena-iv-skaya/febd1d5f15d450ad35eb04735ce698d9e13ff244_bokaap-cover-.jpg'}
-                }
-            ]
-        }
 
         // 4. Если все прошло успешно, то dispatch(types.GET_POSTS, posts, currentPage(согласно параметрам URL))
         if(data.status === 200) {
+            redirect(`/posts?page=${nextPage}${URLparams.username ? `&username=${URLparams.username}` : ''}`);
             dispatch({type: types.GET_POSTS, posts: processData, currentPage: nextPage});
         } else {
             // 5. Если запрос прошел неудачно, dispatch(types.GET_POSTS_ERROR, errorText), и вывести в соотв. месте на странице
+        }
+    }
+}
+
+export function deletePost(id) {
+    return async (dispatch, getState) => {
+        // 1. Сделать DELETE запрос с переданным id
+        const posts = [...getState().posts.posts];
+        const data = await API.deletePost({id});
+
+        const newPosts = posts.filter(post => post.id !== id);
+
+        if (data.status === 200) {
+            dispatch({type: types.DELETE_POST, posts: newPosts});
         }
     }
 }

@@ -17,23 +17,8 @@ export function enterEmail(char) {
     return dispatch => { dispatch({type: types.ENTER_EMAIL, char}) };
 }
 
-export function checkEmail() {
-    return async function(dispatch, getState) {
-        // Проверить с помощью регулярного выражения подходит ли введенная комбинация email
-        // если да, то издать событие EMAIL_ERROR с пустым текстом, если нет, то издать событие EMAIL_ERROR 
-        // c "Неверно введен email"
-    }
-}
-
 export function enterPassword(char) {
     return dispatch => { dispatch({type: types.ENTER_PASSWORD, char}) };
-}
-
-export function checkPassword() {
-    return async function(dispatch, getState) {
-        // Проверить количество символов в пароле, если все ок, то ничего dispatch PASSWORD_ERROR с пустым текстом
-        // в противном случае dispatch PASSWORD_ERROR с текстом "Слишком короткая комбинация" (например)
-    }
 }
 
 export function enterPasswordRepeat(char) {
@@ -44,6 +29,15 @@ export function checkPasswordRepeat() {
     return async function(dispatch, getState) {
         // Проверить совпадают ли пароли и если нет dispatch PASSWORDREPEAT_ERROR, что пароли не совпадают,
         // в противном случае dispatch PASSWORDREPEAT_ERROR с пустым текстом
+        
+        const password = getState().signup.password;
+        const passwordRepeat = getState().signup.passwordRepeat;
+        
+        if (password !== passwordRepeat) {
+            dispatch({type: types.PASSWORDREPEAT_ERROR, errorText: 'Passwords doesn\'t match'});
+        } else {
+            dispatch({type: types.PASSWORDREPEAT_ERROR, errorText: ''});
+        }
     }
 }
 
@@ -51,11 +45,10 @@ export function checkAuth() {
     return async function(dispatch) {
         // сделать запрос за проверкой авторизован ли я, если да, то произвести редирект
         // иначе ничего не делать
-        let mockData = {
-            response: 200
-        }
 
-        if (mockData === 200) {
+        const data = await API.checAuth();
+
+        if (data.status === 200) {
             redirect('/profile');
         }
     }
@@ -70,11 +63,9 @@ export function signup() {
 
         // 1.1 проверить нет ли ошибок с совпадением паролей, логином или email если нет, то отправить запрос
         // если есть то, не отправлять
-        const loginError = getState().signup.loginError;
-        const emailError = getState().signup.emailError;
-        const passwordError = getState().signup.passwordError;
+        const passwordRepeatError = getState().signup.passwordRepeatError;
 
-        if (loginError || emailError || passwordError) {
+        if (passwordRepeatError) {
             return;
         }
 
@@ -89,7 +80,14 @@ export function signup() {
         // иначе издать событие ошибки с ее текстом
         if (data.status === 201) {
             redirect('/profile');
+            dispatch({type: types.RESET_DATA});
         } else {
+            dispatch({
+                type: types.ERROR, 
+                loginError: data.errors.username,
+                emailError: data.errors.email,
+                passwordError: data.errors.password
+            })
             // событие с текстом ошибки, которая пришла с бэка
         }
     }

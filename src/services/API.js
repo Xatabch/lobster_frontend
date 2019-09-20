@@ -28,8 +28,11 @@ class API {
             })
         });
 
+        const errors = await response.json();
+
         return {
-            status: response.status
+            status: response.status,
+            errors: errors
         };
     }
 
@@ -52,9 +55,24 @@ class API {
             })
         });
 
+        const data = await response.json();
+
         return {
-            status: response.status
+            status: response.status,
+            ...data
         };
+    }
+
+    async checAuth() {
+        const response = await fetch(`${this.host}/api/signin/`, {
+            method: 'GET',
+            mode: 'cors',
+            credentials: 'include'
+        });
+
+        return {
+            status: response.status,
+        }
     }
 
     async profile({
@@ -190,6 +208,28 @@ class API {
         return {
             status: response.status,
             posts: Array.from(data)
+        }
+    }
+
+    async deletePost({
+        id = 0
+    } = {}) {
+        let csrftoken = Cookies.get('csrftoken');
+        const response = await fetch(`${this.host}/api/posts/`, {
+            method: 'DELETE',
+            mode: 'cors',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrftoken
+            },
+            body: JSON.stringify({
+                'id': id,
+            })
+        });
+
+        return {
+            status: response.status
         }
     }
 }

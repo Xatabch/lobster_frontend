@@ -21,7 +21,7 @@ export function getUserProfile() {
             profileFollowing: data.following,
             isMyPage: data.isMyPage,
             isFollow: data.isFollow,
-            profilePosts: 20,
+            profilePosts: data.posts,
         }
 
         if(proceedData.status === 200) {
@@ -39,16 +39,20 @@ export function follow() {
         const profileFollowers = getState().profile.profileFollowers;
         const login = getState().profile.login;
 
-        dispatch({type: types.FOLLOW, isFollow: !isFollow});
         let data;
-
+        let newProfileFollowers;
+        
         if (isFollow) {
             data = await API.unfollow({username: login});
+            newProfileFollowers = profileFollowers - 1;
         } else {
             data = await API.follow({username: login});
+            newProfileFollowers = profileFollowers + 1;
         }
-
-        if (data.status !== 200) {
+        
+        if (data.status === 200) {
+            dispatch({type: types.FOLLOW, isFollow: !isFollow, profileFollowers: newProfileFollowers});
+        } else {
             dispatch({type: types.FOLLOW, isFollow: isFollow});
         }
     }

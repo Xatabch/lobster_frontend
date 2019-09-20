@@ -33,7 +33,7 @@ export function sendPost() {
 
         const data = await API.addPost({form});
 
-        if (data.status === 200) {
+        if (data.status === 201) {
             redirect('/profile');
         } else {
 

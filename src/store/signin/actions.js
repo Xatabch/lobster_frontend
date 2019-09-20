@@ -6,13 +6,6 @@ export function enterLogin(char) {
     return dispatch => { dispatch({type: types.ENTER_LOGIN, char}) };
 }
 
-export function checkLogin() {
-    return async function(dispatch, getState) {
-        // Сделать запрос за тем, существует ли такой логин, если да, то ничего не dispatch
-        // если нет, то издать dispatch loginError с текстом "Пользователь не присутствует в системе"
-    }
-}
-
 export function enterPassword(char) {
     return dispatch => { dispatch({type: types.ENTER_PASSWORD, char}) };
 }
@@ -21,11 +14,10 @@ export function checkAuth() {
     return async function(dispatch) {
         // Cделать запрос за проверкой авторизован ли я, если да, то произвести редирект
         // иначе ничего не делать
-        let mockData = {
-            response: 200
-        }
 
-        if (mockData === 200) {
+        const data = await API.checAuth();
+
+        if (data.status === 200) {
             redirect('/profile');
         }
     }
@@ -37,19 +29,20 @@ export function signin() {
         const login = getState().signin.login;
         const password = getState().signin.password;
 
-        const data = await API.signin({login, password});
         // 2. Сделать запрос с этими данными
-        // mock
-        // let mockData = {
-        //     status: 200
-        // }
+        const data = await API.signin({login, password});
 
         // 3. Если статус 200, то произвести редирект на страницу пользователя
         // иначе издать событие ошибки с ее текстом
         if (data.status === 200) {
             redirect('/profile');
+            dispatch({type: types.RESET_DATA});
         } else {
-            // событие с текстом ошибки
+            dispatch({
+                type: types.ERROR,
+                loginError: data.username,
+                passwordError: data.passwordError
+            });
         }
     }
 }

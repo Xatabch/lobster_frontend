@@ -18,16 +18,16 @@ import FormButton from '../components/FormButton/FormButton';
 import { Link } from 'react-router';
 
 class SignInScreen extends Component {
+    componentDidMount() {
+        this.props.dispatch(signinActions.checkAuth());
+    }
+
     onChangeLogin(char) {
         this.props.dispatch(signinActions.enterLogin(char));
     }
 
     onChangePassword(char) {
         this.props.dispatch(signinActions.enterPassword(char));
-    }
-
-    onLoginBlur() {
-        this.props.dispatch(signinActions.checkLogin());
     }
 
     onSubmit(e) {
@@ -68,8 +68,7 @@ class SignInScreen extends Component {
                                           modifiers="text-form_theme_signin"
                                           errorText={this.props.loginError}
                                           inputValue={this.props.login}
-                                          onChange={this.onChangeLogin.bind(this)}
-                                          onBlur={this.onLoginBlur.bind(this)} />
+                                          onChange={this.onChangeLogin.bind(this)} />
                                 <TextForm labelText="password"
                                           inputType="password"
                                           placeholderText="Enter your password"

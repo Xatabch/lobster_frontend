@@ -2,6 +2,8 @@ import React from 'react';
 import classnames from 'classnames';
 import './Post.css';
 
+import Button from '../Button/Button';
+
 function OpenPost(props) {
   return (
     <div className="open-post">
@@ -13,6 +15,7 @@ function OpenPost(props) {
           <div className="post__items">
             <span className="items__item item_theme_author">{props.author}</span>
             <span className="items__item">{props.date}</span>
+            {props.isMyPost ? <Button modifiers="button_theme_post" onClick={props.onDelete} buttonText="Delete" /> : null}
           </div>
           <div className="post__text">{props.children}</div>
         </div>
@@ -35,6 +38,11 @@ export default class Post extends React.Component {
       this.setState({isOpen: false});
       e.stopPropagation();
     }
+
+    onDelete(e) {
+      e.stopPropagation();
+      this.props.onDelete(this.props.id);
+    }
     
     render() {
       return (
@@ -45,6 +53,8 @@ export default class Post extends React.Component {
                                             headerText={this.props.headerText}
                                             author={this.props.author}
                                             date={this.props.date}
+                                            isMyPost={this.props.isMyPost}
+                                            onDelete={this.props.onDelete}
                                             onClose={this.onClose.bind(this)}>{this.props.children}</OpenPost>) : null}
           <div className="post__photos">
             <img className="photos__photo" src={`${HOST}/media/${this.props.photoSrc}`} alt="" />
@@ -53,6 +63,7 @@ export default class Post extends React.Component {
           <div className="post__items">
             <span className="items__item item_theme_author">{this.props.author}</span>
             <span className="items__item">{this.props.date}</span>
+            {this.props.isMyPost ? <Button modifiers="button_theme_post" onClick={this.onDelete.bind(this)} buttonText="Delete" /> : null}
           </div>
         </div>
       )

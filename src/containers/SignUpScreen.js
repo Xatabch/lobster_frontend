@@ -18,6 +18,10 @@ import FormButton from '../components/FormButton/FormButton';
 import { Link } from 'react-router';
 
 class SignUpScreen extends Component {
+    componentDidMount() {
+        this.props.dispatch(signupActions.checkAuth());
+    }
+
     onChangeLogin(char) {
         this.props.dispatch(signupActions.enterLogin(char));
     }
@@ -32,18 +36,6 @@ class SignUpScreen extends Component {
 
     onChangePasswordRepeat(char) {
         this.props.dispatch(signupActions.enterPasswordRepeat(char));
-    }
-
-    onLoginBlur() {
-        this.props.dispatch(signupActions.checkLogin());
-    }
-
-    onEmailBlur() {
-        this.props.dispatch(signupActions.checkEmail());
-    }
-
-    onPasswordBlur() {
-        this.props.dispatch(signupActions.checkPassword());
     }
 
     onPasswordRepeatBlur() {
@@ -88,16 +80,14 @@ class SignUpScreen extends Component {
                                           modifiers="text-form_theme_signup"
                                           errorText={this.props.emailError}
                                           inputValue={this.props.email}
-                                          onChange={this.onChangeEmail.bind(this)}
-                                          onBlur={this.onEmailBlur.bind(this)} />
+                                          onChange={this.onChangeEmail.bind(this)} />
                                 <TextForm labelText="login"
                                           inputType="text"
                                           placeholderText="Only latin characters"
                                           modifiers="text-form_theme_signup"
                                           errorText={this.props.loginError}
                                           inputValue={this.props.login}
-                                          onChange={this.onChangeLogin.bind(this)}
-                                          onBlur={this.onLoginBlur.bind(this)} />
+                                          onChange={this.onChangeLogin.bind(this)} />
                                 <TextForm labelText="password"
                                           inputType="password"
                                           placeholderText="From 8 symbols"
@@ -106,7 +96,7 @@ class SignUpScreen extends Component {
                                           inputValue={this.props.password}
                                           onChange={this.onChangePassword.bind(this)} />
                                 <TextForm labelText="repeat password"
-                                          inputType="text"
+                                          inputType="password"
                                           placeholderText="Repeat password"
                                           modifiers="text-form_theme_signup"
                                           errorText={this.props.passwordRepeatError}
