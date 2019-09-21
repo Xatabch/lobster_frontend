@@ -15,7 +15,6 @@ function OpenPost(props) {
           <div className="post__items">
             <span className="items__item item_theme_author">{props.author}</span>
             <span className="items__item">{`${props.date.getDate()}.${props.date.getMonth()}.${props.date.getFullYear()}`}</span>
-            {props.isMyPost ? <Button modifiers="button_theme_post" onClick={props.onDelete} buttonText="Delete" /> : null}
           </div>
           <div className="post__text">{props.children}</div>
         </div>
