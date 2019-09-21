@@ -29,7 +29,7 @@ class AddPostScreen extends Component {
 
     render() {
         return ( 
-            <Container>
+            <Container modifiers="container_theme_addpost">
                 <Head modifiers="head_theme_addpost">
                     <Logo modifiers="logo_theme_addpost" />
                     <FormButton modifiers="form-button_theme_addpost" 

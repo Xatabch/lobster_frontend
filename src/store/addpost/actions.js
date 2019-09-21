@@ -22,6 +22,10 @@ export function sendPost() {
         const postText = [...getState().addpost.postText];
         const postPhotos = {...getState().addpost.postPhotos};
 
+        if (!postText.length && !postPhotos.length) {
+            return;
+        }
+
         let form = new FormData();
         for(let [key, value] of Object.entries(postPhotos)){
             form.append(`${key}`, value);

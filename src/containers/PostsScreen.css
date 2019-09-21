@@ -6,6 +6,7 @@
   background-color: #2B303A;
   height: 89%;
   overflow: scroll;
+  overflow-x: hidden;
 }
 
 .post_theme_posts {
@@ -27,7 +28,6 @@
 
     .content_theme_posts {
       background-color: #2B303A;
-      height: 90%;
       overflow: scroll;
     }
 }
@@ -44,8 +44,6 @@
   }
 
   .content_theme_posts {
-    background-color: #2B303A;
-    height: 90%;
-    overflow: scroll;
+    padding: 0 0 10vh 0;
   }
 }

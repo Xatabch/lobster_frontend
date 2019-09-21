@@ -1,7 +1,5 @@
 .addpost {
     width: 100%;
-    height: 70%;
-    overflow: scroll;
     padding: 8% 20% 0 20%;
     z-index: 2;
 }
