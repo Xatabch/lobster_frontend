@@ -4,6 +4,7 @@ import * as types from './actionTypes';
 const initialState = Immutable({
     postPhotos: {},
     postText: [],
+    isSend: false
 });
 
 export default function reduce(state = initialState, action = {}) {
@@ -12,11 +13,18 @@ export default function reduce(state = initialState, action = {}) {
             return state.merge({
                 postText: action.postText
             });
+
         case types.UPLOAD_PHOTO:
             return state.merge({
                 postPhotos: action.postPhotos,
                 postText: action.postText
-            })
+            });
+
+        case types.SEND_POST:
+            return state.merge({
+                isSend: action.isSend
+            });
+
         default:
             return state;
 
@@ -24,3 +32,5 @@ export default function reduce(state = initialState, action = {}) {
 }
 
 export const getText = state => [...state.addpost.postText];
+
+export const isSend = state => state.addpost.isSend;

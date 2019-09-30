@@ -14,13 +14,19 @@ class Paginate extends Component {
     render() {
         return (
             <div className="paginate">
-                <div className="pagiante__left" onClick={() => { this.onLeftClick() }}>
-                    Left
-                </div>
-                <div className="paginate__page">{this.props.page}</div>
-                <div className="pagiante__right" onClick={() => { this.onRightClick() }}>
-                    Right
-                </div>
+                { this.props.isLast ? 
+                    (<div className="pagiante__left" onClick={() => { this.onLeftClick() }}>
+                        Left
+                    </div>)
+                    : (<div className="pagiante__left"></div>)
+                }
+                { !this.props.isEmpty ? (<div className="paginate__page">{this.props.page}</div>) : null }
+                { this.props.isNext ?
+                    (<div className="pagiante__right" onClick={() => { this.onRightClick() }}>
+                        Right
+                    </div>)
+                    : (<div className="pagiante__right"></div>)
+                }
             </div>
         )
     }

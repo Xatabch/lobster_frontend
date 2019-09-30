@@ -29,7 +29,6 @@ export function getPosts(direction) {
             data = await API.getPosts({page: nextPage, offset: postsOffset});
         }
         
-        
         if (data.posts.length === 0 && nextPage != 1) {
             redirect(`/posts?page=1${URLparams.username ? `&username=${URLparams.username}` : ''}`);
             return;
@@ -48,20 +47,25 @@ export function getPosts(direction) {
 
         if(data.status === 200) {
             redirect(`/posts?page=${nextPage}${URLparams.username ? `&username=${URLparams.username}` : ''}`);
-            dispatch({type: types.GET_POSTS, posts: processData, currentPage: nextPage});
+            dispatch({type: types.GET_POSTS, 
+                      posts: processData, 
+                      currentPage: nextPage, 
+                      isNext: data.isNext
+                    });
         }
     }
 }
 
 export function deletePost(id) {
     return async (dispatch, getState) => {
-        const posts = [...getState().posts.posts];
+        // const posts = [...getState().posts.posts];
         const data = await API.deletePost({id});
 
-        const newPosts = posts.filter(post => post.id !== id);
+        // const newPosts = posts.filter(post => post.id !== id);
 
         if (data.status === 200) {
-            dispatch({type: types.DELETE_POST, posts: newPosts});
+            dispatch(getPosts());
+            // dispatch({type: types.DELETE_POST, posts: newPosts});
         }
     }
 }

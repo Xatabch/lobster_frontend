@@ -5,7 +5,8 @@ const initialState = Immutable({
     posts:[],
     errorText: '',
     currentPage: 1,
-    postsOffset: 5
+    postsOffset: 5,
+    isNext: false
 });
 
 export default function reduce(state = initialState, action = {}) {
@@ -13,7 +14,8 @@ export default function reduce(state = initialState, action = {}) {
         case types.GET_POSTS:
             return state.merge({
                 posts: action.posts,
-                currentPage: action.currentPage
+                currentPage: action.currentPage,
+                isNext: action.isNext
             });
 
         case types.GET_POSTS_ERROR:
@@ -37,3 +39,9 @@ export const getPosts = state => [...state.posts.posts];
 export const getError = state => state.posts.errorText;
 
 export const getCurrentPage = state => state.posts.currentPage;
+
+export const isNext = state => state.posts.isNext;
+
+export const isLast = state => state.posts.currentPage !== 1;
+
+export const isEmpty = state => state.posts.posts.length === 0;

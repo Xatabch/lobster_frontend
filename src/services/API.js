@@ -189,7 +189,8 @@ class API {
 
         return {
             status: response.status,
-            posts: Array.from(data)
+            posts: Array.from(data.posts),
+            isNext: data.isNext
         }
     }
 

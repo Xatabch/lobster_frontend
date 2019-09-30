@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import classnames from 'classnames';
 import './AddPostScreen.css';
 
 import * as addPostActions from '../store/addpost/actions';
@@ -32,9 +33,9 @@ class AddPostScreen extends Component {
             <Container modifiers="container_theme_addpost">
                 <Head modifiers="head_theme_addpost">
                     <Logo modifiers="logo_theme_addpost" />
-                    <FormButton modifiers="form-button_theme_addpost" 
+                    <FormButton modifiers={classnames(this.props.isSend ? "form-button_theme_block" : "", "form-button_theme_addpost")}
                                 buttonText="Publish"
-                                onClick={this.onSendPost.bind(this)} />
+                                onClick={!this.props.isSend ? this.onSendPost.bind(this) : null} />
                 </Head>
                 <Content modifiers="content_theme_addpost">
                     <AddPost onChangeText={this.onChangeText.bind(this)}
@@ -48,7 +49,8 @@ class AddPostScreen extends Component {
 
 function mapStateToProps(state) {
     return { 
-        postText: addPostSelectors.getText(state)
+        postText: addPostSelectors.getText(state),
+        isSend: addPostSelectors.isSend(state)
     };
 }
 

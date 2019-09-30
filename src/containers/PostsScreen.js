@@ -59,7 +59,10 @@ class PostsScreen extends Component {
                         )
                     })}
                 <Paginate page={this.props.currentPage}
-                          onClick={this.onClick.bind(this)} />
+                          onClick={this.onClick.bind(this)}
+                          isNext={this.props.isNext}
+                          isLast={this.props.isLast}
+                          isEmpty={this.props.isEmpty} />
                 </Content>
                 <Navbar activeLink="posts"/>
             </Container>
@@ -71,7 +74,10 @@ function mapStateToProps(state) {
     return {
         posts: postsSelectors.getPosts(state),
         errorText: postsSelectors.getError(state),
-        currentPage: postsSelectors.getCurrentPage(state)
+        currentPage: postsSelectors.getCurrentPage(state),
+        isNext: postsSelectors.isNext(state),
+        isLast: postsSelectors.isLast(state),
+        isEmpty: postsSelectors.isEmpty(state)
     };
 }
 

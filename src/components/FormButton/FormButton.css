@@ -11,3 +11,8 @@
     padding: 10px 48px 10px 48px;
     border-radius: 20px;
 }
+
+.form-button_theme_block {
+    background-color: #92DCE5;
+    opacity: 0.5;
+}

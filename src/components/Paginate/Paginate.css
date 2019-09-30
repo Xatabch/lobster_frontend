@@ -10,8 +10,10 @@
 
 .pagiante__left {
     cursor: pointer;
+    width: 50px;
 }
 
 .pagiante__right {
     cursor: pointer;
+    width: 50px;
 }

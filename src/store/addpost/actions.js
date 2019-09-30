@@ -33,9 +33,11 @@ export function sendPost() {
         
         form.append('text', JSON.stringify({...Object.values(postText)}));
 
+        dispatch({type: types.SEND_POST, isSend: true});
         const data = await API.addPost({form});
 
         if (data.status === 201) {
+            dispatch({type: types.SEND_POST, isSend: false});
             redirect('/profile');
         }
     }
